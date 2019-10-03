@@ -7,7 +7,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = "00000";
-      registers.op = "0";
+      registers.op = "nop";
       registers.oi = "0000";
     }
   },
@@ -20,7 +20,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic = dest;
       registers.ir = `1${fmt}`;
-      registers.op = "1";
+      registers.op = "jmp";
       registers.oi = fmt;
     }
   },
@@ -34,7 +34,7 @@ var instructions = {
       if (!registers.ac) registers.ic = dest;
       else registers.ic++;
       registers.ir = `2${fmt}`;
-      registers.op = "2";
+      registers.op = "jz";
       registers.oi = fmt;
     }
   },
@@ -48,7 +48,7 @@ var instructions = {
       if (registers.ac) registers.ic = dest;
       else registers.ic++;
       registers.ir = `3${fmt}`;
-      registers.op = "3";
+      registers.op = "jnz";
       registers.oi = fmt;
     }
   },
@@ -61,7 +61,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `4${fmt}`;
-      registers.op = "4";
+      registers.op = "lv";
       registers.oi = fmt;
     }
   },
@@ -74,7 +74,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `5${fmt}`;
-      registers.op = "5";
+      registers.op = "add";
       registers.oi = fmt;
     }
   },
@@ -88,7 +88,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `5${fmt}`;
-      registers.op = "5";
+      registers.op = "addm";
       registers.oi = fmt;
     }
   },
@@ -101,7 +101,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `6${fmt}`;
-      registers.op = "6";
+      registers.op = "sub";
       registers.oi = fmt;
     }
   },
@@ -115,7 +115,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `6${fmt}`;
-      registers.op = "6";
+      registers.op = "subm";
       registers.oi = fmt;
     }
   },
@@ -128,7 +128,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `7${fmt}`;
-      registers.op = "7";
+      registers.op = "mul";
       registers.oi = fmt;
     }
   },
@@ -142,7 +142,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `7${fmt}`;
-      registers.op = "7";
+      registers.op = "mulm";
       registers.oi = fmt;
     }
   },
@@ -155,7 +155,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `8${fmt}`;
-      registers.op = "8";
+      registers.op = "div";
       registers.oi = fmt;
     }
   },
@@ -169,7 +169,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `8${fmt}`;
-      registers.op = "8";
+      registers.op = "divm";
       registers.oi = fmt;
     }
   },
@@ -183,7 +183,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `9${fmt}`;
-      registers.op = "9";
+      registers.op = "load";
       registers.oi = fmt;
     }
   },
@@ -201,7 +201,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic++;
       registers.ir = `A${fmt}`;
-      registers.op = "A";
+      registers.op = "stor";
       registers.oi = fmt;
     }
   },
@@ -217,7 +217,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic = dest;
       registers.ir = `B${fmt}`;
-      registers.op = "B";
+      registers.op = "sc";
       registers.oi = fmt;
       registers.stack.push(registers.ra + 1);
     }
@@ -232,7 +232,7 @@ var instructions = {
       registers.ra = registers.ic;
       registers.ic = registers.stack.pop();
       registers.ir = "C0000";
-      registers.op = "C";
+      registers.op = "rc";
       registers.oi = "0000";
     }
   },
@@ -241,7 +241,7 @@ var instructions = {
     argCount: 0,
     f: function() {
       registers.end = true;
-      registers.op = "D";
+      registers.op = "end";
       registers.oi = "0000";
       registers.ir = "D0000";
       registers.ra = registers.ic;
@@ -260,7 +260,7 @@ var instructions = {
         return;
       }
       registers.ac = inAlertInput;
-      registers.op = `E`;
+      registers.op = `in`;
       registers.oi = "0000";
       registers.ir = `E0000`;
       registers.ra = registers.ic;
@@ -274,7 +274,7 @@ var instructions = {
       alert(format16(registers.ac));
       registers.ra = registers.ic;
       registers.ic++;
-      registers.op = `F`;
+      registers.op = `out`;
       registers.ir = "F0000";
     }
   }

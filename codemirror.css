@@ -1,9 +1,5 @@
 /* BASICS */
 
-.hide-element {
-  display: none;
-}
-
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font: normal 14px Consolas, 'Lucida Console', 'Lucida Sans Typewriter', monospace;

@@ -7,8 +7,9 @@
 	<title>Assembly Emulator</title>
 
 	<link rel="stylesheet" href="codemirror.css" />
+	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" charset="utf-8" src="codemirror.js"></script>
-	<script type="text/javascript" charset="utf-8" src="Asm86.js"></script>
+	<script type="text/javascript" charset="utf-8" src="asm.js"></script>
 	<script type="text/javascript" charset="utf-8" src="active-line.js"></script>
 
 	<style type="text/css">
@@ -24,18 +25,49 @@
 	<button onclick="step()">step</button>
 	<button onclick="execute()">execute</button>
 	<button onclick="toggleEditor()"></button>
-	<div> ic: <span id="ic"></span></div>
+	<div> ac: <span id="ac"></span></div>
 	<div> ra: <span id="ra"></span></div>
-	<div> ir: <span id="ir"></span></div>
+	<div> ic: <span id="ic"></span></div>
+	<!-- <div> ir: <span id="ir"></span></div> -->
 	<div> op: <span id="op"></span></div>
 	<div> oi: <span id="oi"></span></div>
-	<div> ac: <span id="ac"></span></div>
 	<textarea id="codeEditor" spellcheck="false" style="width: 600px; height: 500px;">
-lv 0001
-</textarea>
+		
+lv 0x0006
+stor myvar
+lv 0x0000
+sc myfunc
+out
+end
+
+
+myfunc:
+load myvar
+div 0x0002
+rc
+
+myvar:
+	</textarea>
 	<script type="text/javascript" src="setup.js"></script>
 	<script type="text/javascript" src="compiler.js"></script>
 	<script src="instructions.js"></script>
 </body>
 
 </html>
+<!-- lv 0x000a
+stor valor1
+lv 0x0002
+stor valor2
+sc divisao
+out
+end
+
+valor1:
+valor2:
+res:
+
+divisao:
+load valor1
+divm valor2
+stor res
+rc -->

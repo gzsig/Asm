@@ -78,7 +78,10 @@ function compile() {
       }
     }
 
-    if ((isLabel && tokens.length > 2) || (!isLabel && tokens.length - 1 !== instruction.argCount))
+    if (
+      (isLabel && tokens.length > 2) ||
+      (!isLabel && tokens.length - 1 !== instruction.argCount)
+    ) {
       return (
         "opcode " +
         opcode +
@@ -89,6 +92,7 @@ function compile() {
         " mas recebeu " +
         (tokens.length - 1)
       );
+    }
 
     var arg = 0,
       argNumber = true;
@@ -103,7 +107,12 @@ function compile() {
     }
 
     if (isLabel && !argNumber)
-      return "label inicializado com valor nao contante na linha " + (i + 1) + ": " + tokens[1];
+      return (
+        "label inicializado com valor nao contante na linha " +
+        (i + 1) +
+        ": " +
+        tokens[1]
+      );
 
     memory[program.length] = argNumber ? arg : 0;
 
@@ -153,7 +162,7 @@ function execute() {
 function renderRegister() {
   document.getElementById("ic").innerHTML = registers.ic;
   document.getElementById("ra").innerHTML = registers.ra;
-  document.getElementById("ir").innerHTML = registers.ir;
+  // document.getElementById("ir").innerHTML = registers.ir;
   document.getElementById("op").innerHTML = registers.op;
   document.getElementById("oi").innerHTML = registers.oi;
   document.getElementById("ac").innerHTML = registers.ac;
@@ -162,5 +171,5 @@ function renderRegister() {
 }
 
 function toggleEditor() {
-  document.getElementById('codeEditor').classList.toggle("hide-element")
+  document.getElementById("codeEditor").classList.toggle("hide-element");
 }
