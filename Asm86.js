@@ -4,7 +4,7 @@ CodeMirror.defineMode("asm86", function ()
 	var keywords2 = /^(end|sc|rc|call|int|iret|ret|ja|jae|jb|jbe|jc|je|jg|jge|jl|jle|jmp|jna|jnae|jnb|jnbe|jnc|jne|jng|jnge|jnl|jnle|jno|jns|jnz|jo|js|jz)\b/i;
 	var keywords3 = /^(e?[abcd]x|[abcd][lh]|e?(si|di|bp|sp)|eip)\b/i;
 	var keywords4 = /^(d?word|byte|ptr)\b/i;
-	var numbers = /^(0x[0-9a-f]+|0b[01]+|[0-9]+|[0-9][0-9a-f]+h|[0-1]+b)\b/i;
+	var numbers = /^(0x[0-9a-f]+)\b/i;
 	return {
 		startState: function () {
 			return { context: 0 };

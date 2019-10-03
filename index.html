@@ -22,16 +22,20 @@
 <body>
 	<button onclick="compile()">compile</button>
 	<button onclick="step()">step</button>
+	<button onclick="execute()">execute</button>
+	<button onclick="toggleEditor()"></button>
+	<div> ic: <span id="ic"></span></div>
+	<div> ra: <span id="ra"></span></div>
+	<div> ir: <span id="ir"></span></div>
+	<div> op: <span id="op"></span></div>
+	<div> oi: <span id="oi"></span></div>
+	<div> ac: <span id="ac"></span></div>
 	<textarea id="codeEditor" spellcheck="false" style="width: 600px; height: 500px;">
 lv 0001
-stor add
-lv 0008
-load add
-
-add:
 </textarea>
 	<script type="text/javascript" src="setup.js"></script>
 	<script type="text/javascript" src="compiler.js"></script>
+	<script src="instructions.js"></script>
 </body>
 
 </html>
