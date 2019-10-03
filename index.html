@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head data-nores="1">
+	<meta charset="utf-8" />
+	<link rel="Shortcut Icon" href="/favicon.ico" />
+	<title>Assembly Emulator</title>
+
+	<link rel="stylesheet" href="codemirror.css" />
+	<script type="text/javascript" charset="utf-8" src="codemirror.js"></script>
+	<script type="text/javascript" charset="utf-8" src="Asm86.js"></script>
+	<script type="text/javascript" charset="utf-8" src="active-line.js"></script>
+
+	<style type="text/css">
+		#codeEditor {
+			width: 600px;
+			height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<button onclick="compile()">compile</button>
+	<button onclick="step()">step</button>
+	<textarea id="codeEditor" spellcheck="false" style="width: 600px; height: 500px;">
+lv 0001
+stor add
+lv 0008
+load add
+
+add:
+</textarea>
+	<script type="text/javascript" src="setup.js"></script>
+	<script type="text/javascript" src="compiler.js"></script>
+</body>
+
+</html>
