@@ -11,7 +11,7 @@ var registers = {
   ic: 0,
   ra: 0,
   ir: 0,
-  op: 0,
+  op: "",
   oi: 0,
   end: false,
   stack: [],
@@ -19,7 +19,7 @@ var registers = {
     registers.ic = 0;
     registers.ra = 0;
     registers.ir = 0;
-    registers.op = 0;
+    registers.op = "";
     registers.oi = 0;
     registers.ac = 0;
     registers.end = false;
@@ -160,12 +160,12 @@ function execute() {
 }
 
 function renderRegister() {
-  document.getElementById("ic").innerHTML = registers.ic;
-  document.getElementById("ra").innerHTML = registers.ra;
+  document.getElementById("ic").innerHTML = format8(registers.ic);
+  document.getElementById("ra").innerHTML = format8(registers.ra);
   // document.getElementById("ir").innerHTML = registers.ir;
-  document.getElementById("op").innerHTML = registers.op;
-  document.getElementById("oi").innerHTML = registers.oi;
-  document.getElementById("ac").innerHTML = registers.ac;
+  document.getElementById("op").innerHTML = registers.op.toUpperCase();
+  document.getElementById("oi").innerHTML = format16(registers.oi);
+  document.getElementById("ac").innerHTML = format16(registers.ac);
   // registers.end = false;
   // registers.stack = [];
 }

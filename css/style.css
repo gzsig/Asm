@@ -1,3 +1,41 @@
+body {
+  margin: 0;
+}
+
+nav {
+  text-align: center
+}
+
+#codeEditor {
+  position: relative;
+}
+
+.box {
+  border: solid 1px #000;
+  border-radius: 5px;
+  padding: 8px;
+}
+
 .hide-element {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
+}
+
+.register {
+  background-color: #add8e6;
+  width: 124px;
+  margin: 8px;
+}
+
+.resgister-and-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
 }
