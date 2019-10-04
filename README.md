@@ -4,8 +4,8 @@
 ---
   nop: Blank memory slot
 
-  jmp: Unconditional jump. Receives one variable as parameter
-    ex => jmp myvar
+  * `jmp`: Unconditional jump. Receives one variable as parameter
+      * ex => jmp myvar
 
   jz: Jump if the value of the acumulator is 0
 
