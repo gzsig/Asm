@@ -3,61 +3,86 @@
 ### Documentation
 ---
   * `nop`: Blank memory slot
-      * ex => `nop`
+      * usage → `nop`
 
   * `jmp`: Unconditional jump. Receives one variable as parameter
-      * ex => `jmp myvar`
+      * usage → `jmp myvar`
 
   * `jz`: Jump if the value of the accumulator is 0
-    * ex => `jz myvar`
+    * usage → `jz myvar`
 
   * `jnz`: Jump if the value of the accumulator is NOT 0
-    * ex => `jnz myvar`
+    * usage → `jnz myvar`
 
   * `lv`: Load a constant directly to the accumulator
-    * ex => `lv 0x0007`
+    * usage → `lv 0x0007`
 
   * `add`: Add a constant to the value of the accumulator
-    * ex => `add 0x0007`
+    * usage → `add 0x0007`
 
   * `addm`: Add a variable to the value of the accumulator
-    * ex => `addm myvar`
+    * usage → `addm myvar`
 
   * `sub`: Subtract a constant to the value of the accumulator
-    * ex => `sub 0x0007`
+    * usage → `sub 0x0007`
 
   * `subm`: Add a variable to the value of the accumulator
-    * ex => `subm myvar`
+    * usage → `subm myvar`
 
   * `mul`: Multiply a constant to the value of the accumulator
-    * ex => `mul 0x0007`
+    * usage → `mul 0x0007`
 
   * `mulm`: Multiply a variable to the value of the accumulator
-    * ex => `mulm myvar`
+    * usage → `mulm myvar`
 
   * `div`: Divide a constant to the value of the accumulator
-    * ex => `div 0x0007`
+    * usage → `div 0x0007`
 
   * `divm`: Divide the value of the accumulator by a variable
-    * ex => `divm myvar`
+    * usage → `divm myvar`
 
   * `load`: Load a variable directly to the accumulator
-    * ex => `load myvar`
+    * usage → `load myvar`
 
   * `stor`: Stor the current value of the accumulator to a variable
-    * ex => `stor myvar`
+    * usage → `stor myvar`
 
   * `sc`: Function call
-      * ex => `sc myfunc`
+      * usage → `sc myfunc`
 
   * `rc`: Function retun, will jump to the line below the function call keeping the current value in the accumulator
-      * ex => `rc`
+      * usage → `rc`
 
   * `end`: Will stop the execution of the program
-    * ex => `end`
+    * usage → `end`
 
   * `in`: Prompts the user with an input (inputed number should be in hexadecimal) and loads the input to the accumulator
-      * ex => `in`
+      * usage → `in`
 
   * `out`: Alerts the user with the current value of the accumulator 
 
+### Variable and Function declarations
+---
+###### Variable
+Use variable naturaly throughout the code and declare them at the end of the program followed by a `:` token.
+
+```
+lv 0x0F03
+stor myvar
+end
+
+myvar:
+```
+
+###### Function
+Call functions from any where in your code and for best practices declar functions at the end of the program along with the variables. At the end of each function the program will return to the line below the function call. Functions are declared by adding a `:` token after the name and followed by a block, to declare the end of a function use the `rc` token.
+
+```
+lv 0x0006
+sc myfunc
+end
+
+myfunc:
+div 0x0002
+rc
+```
