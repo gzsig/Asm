@@ -143,6 +143,8 @@ function compile() {
     memory[i] = p.arg;
   }
 
+  handelRam()
+
   return null;
 }
 
@@ -156,11 +158,24 @@ function step() {
   var p = program[registers.ic];
   p.instruction.f(p.arg);
   renderRegister();
+  handelRam()
 }
 
 function execute() {
   while (!registers.end) step();
   renderRegister();
+}
+
+function handelRam() {
+  let ram = document.getElementById("ram")
+  ram.innerHTML = ""
+  for(let i = 0; i<memory.length; i++){
+    if(memory[i] != 0){
+      let value = document.createElement("p")
+      value.innerHTML = `0x${format16(i)}: ${format16(memory[i])}`
+      ram.appendChild(value)
+    }
+  }
 }
 
 function renderRegister() {
@@ -176,4 +191,7 @@ function renderRegister() {
 
 function toggleEditor() {
   document.getElementById("codeEditor").classList.toggle("hide-element");
+}
+function toggleRam() {
+  document.getElementById("ram").classList.toggle("hide-element");
 }

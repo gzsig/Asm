@@ -22,7 +22,8 @@
 			<button onclick="compile()">compile</button>
 			<button onclick="step()">step</button>
 			<button onclick="execute()">execute</button>
-			<button onclick="toggleEditor()"></button>
+			<button onclick="toggleEditor()">Toggle Editor</button>
+			<button onclick="toggleRam()">Toggle RAM</button>
 		</div>
 			<div class="register box">
 				<div> ac: <span id="ac"></span></div>
@@ -51,6 +52,10 @@ rc
 myvar:
 	</textarea>
 </div>
+
+<div id="ram"></div>
+
+
 	<script type="text/javascript" src="./js/setup.js"></script>
 	<script type="text/javascript" src="./js/compiler.js"></script>
 	<script type="text/javascript" src="./js/instructions.js"></script>
