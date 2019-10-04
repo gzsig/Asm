@@ -66,7 +66,7 @@
 ###### Variable
 Use variable naturaly throughout the code and declare them at the end of the program followed by a `:` token.
 
-```
+```asm
 lv 0x0F03
 stor myvar
 end
@@ -77,7 +77,7 @@ myvar:
 ###### Function
 Call functions from any where in your code and for best practices declar functions at the end of the program along with the variables. At the end of each function the program will return to the line below the function call. Functions are declared by adding a `:` token after the name and followed by a block, to declare the end of a function use the `rc` token.
 
-```
+```asm
 lv 0x0006
 sc myfunc
 end
