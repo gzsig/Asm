@@ -2,7 +2,7 @@
 
 ### Documentation
 ---
-  * <span style='color:red' >`nop`</span>: Blank memory slot
+  * <span style='color:red' >`nop`: Blank memory slot</span>
       * usage → `nop`
 
   * `jmp`: Unconditional jump. Receives one variable as parameter
