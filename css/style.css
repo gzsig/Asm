@@ -8,6 +8,9 @@ nav {
 
 #codeEditor {
   position: relative;
+    width: 600px;
+    height: 75vh;
+    min-height: 500px
 }
 
 .box {
