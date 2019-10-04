@@ -1,3 +1,7 @@
+SC NAO PODE COMECAR COM A,B,C,D,E,F
+
+
+
 ;par ou impar
 
 in

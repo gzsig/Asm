@@ -97,7 +97,11 @@ function compile() {
     var arg = 0,
       argNumber = true;
     if (tokens.length > 1) {
-      arg = parseInt(tokens[1], 16);
+      if (tokens[1].substr(0,2) == "0x"){
+        arg = parseInt(tokens[1], 16);
+      } else {
+        arg = tokens[1];
+      }
       if (isNaN(arg)) {
         arg = tokens[1];
         argNumber = false;
