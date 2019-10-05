@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head data-nores="1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head data-nores="1">
-	<meta charset="utf-8" />
-	<link rel="Shortcut Icon" href="/favicon.ico" />
-	<title>Assembly Emulator</title>
+    <title>Assembly Emulator</title>
 
-	<link rel="stylesheet" href="./css/codemirror.css" />
-	<link rel="stylesheet" href="./css/style.css" />
-	<script type="text/javascript" charset="utf-8" src="./js/codemirror.js"></script>
-	<script type="text/javascript" charset="utf-8" src="./js/active-line.js"></script>
-	<script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
+    <link rel="stylesheet" href="./css/codemirror.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="./js/codemirror.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="./js/active-line.js"
+    ></script>
+    <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
+  </head>
 
-</head>
+  <body>
+    <nav>
+      Asm 24bits
 
-<body>
-	<nav>Asm 24bits</nav>
-	<div class="wrapper">
-		<div class="resgister-and-btns">
-			<div>
-			<button onclick="compile()">compile</button>
-			<button onclick="step()">step</button>
-			<button onclick="execute()">execute</button>
-			<button onclick="toggleEditor()">Toggle Editor</button>
-			<button onclick="toggleRam()">Toggle RAM</button>
-		</div>
-			<div class="register box">
-				<div> ac: <span id="ac"></span></div>
-				<div> ra: <span id="ra"></span></div>
-				<div> ic: <span id="ic"></span></div>
-				<!-- <div> ir: <span id="ir"></span></div> -->
-				<div> op: <span id="op"></span></div>
-				<div> oi: <span id="oi"></span></div>
-			</div>
-		</div>
-	<textarea id="codeEditor" spellcheck="false">
-
+      <button onclick="toggleEditor()">Toggle Editor</button>
+      <button onclick="toggleRam()">Toggle RAM</button>
+      <button onclick="toggleVariables()">Toggle Variables</button>
+    </nav>
+    <div class="wrapper">
+      <div class="info-container">
+      <div id="ram" class="info">
+        <p>RAM</p>
+      </div>
+      <div id="variables" class="info">
+        <p>Variables</p>
+      </div>
+    </div>
+      <div class="resgister-and-btns">
+        <div>
+          <button onclick="compile()">compile</button>
+          <button onclick="step()">step</button>
+          <button onclick="execute()">execute</button>
+        </div>
+        <div class="register box">
+          <div>ac: <span id="ac"></span></div>
+          <div>ra: <span id="ra"></span></div>
+          <div>ic: <span id="ic"></span></div>
+          <!-- <div> ir: <span id="ir"></span></div> -->
+          <div>op: <span id="op"></span></div>
+          <div>oi: <span id="oi"></span></div>
+        </div>
+      </div>
+      <textarea id="codeEditor" spellcheck="false">
 lv 0x0006
 stor myvar
 lv 0x0000
@@ -50,35 +69,12 @@ div 0x0002
 rc
 
 myvar:
-	</textarea>
-</div>
+	</textarea
+      >
+    </div>
 
-<div id="ram"></div>
-
-
-	<script type="text/javascript" src="./js/setup.js"></script>
-	<script type="text/javascript" src="./js/compiler.js"></script>
-	<script type="text/javascript" src="./js/instructions.js"></script>
-</body>
-
+    <script type="text/javascript" src="./js/setup.js"></script>
+    <script type="text/javascript" src="./js/compiler.js"></script>
+    <script type="text/javascript" src="./js/instructions.js"></script>
+  </body>
 </html>
-<!-- lv 0x000a
-stor valor1
-lv 0x0002
-stor valor2
-sc divisao
-out
-end
-
-valor1:
-valor2:
-res:
-
-divisao:
-load valor1
-divm valor2
-stor res
-rc -->
-
-
-

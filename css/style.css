@@ -1,16 +1,28 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(54, 60, 76)
+}
+
 body {
+  padding: 0;
   margin: 0;
 }
 
 nav {
-  text-align: center
+  text-align: center;
 }
 
 #codeEditor {
   position: relative;
-    width: 600px;
-    height: 75vh;
-    min-height: 500px
+  width: 500px;
+  height: 98vh;
+  min-height: 400px;
 }
 
 .box {
@@ -24,6 +36,23 @@ nav {
   visibility: hidden;
 }
 
+.info {
+  height: 98vh;
+  min-width: 124px;
+  background-color: #282A37;
+  overflow: scroll;
+  color: #fff
+}
+
+.info-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.hex-num {
+  color: #12a2d4;
+}
+
 .register {
   background-color: #add8e6;
   width: 124px;
@@ -35,10 +64,32 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 30%;
+}
+
+.var {
+  color: #45FC74;
 }
 
 .wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  #codeEditor {
+    position: relative;
+    width: 100vw;
+    height: 60vh;
+    min-height: 400px;
+  }
+
+.info {
+  height: auto;
+}
+
+  .wrapper {
+    flex-direction: column-reverse;
+    background-color: red;
+  }
 }

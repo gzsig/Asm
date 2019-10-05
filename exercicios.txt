@@ -1,7 +1,3 @@
-SC NAO PODE COMECAR COM A,B,C,D,E,F
-
-
-
 ;par ou impar
 
 in
@@ -22,3 +18,23 @@ end
 
 mynum:
 res:
+
+
+;IDK
+lv 0x000a
+stor valor1
+lv 0x0002
+stor valor2
+sc divisao
+out
+end
+
+valor1:
+valor2:
+res:
+
+divisao:
+load valor1
+divm valor2
+stor res
+rc

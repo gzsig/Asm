@@ -3,11 +3,11 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font: normal 14px Consolas, 'Lucida Console', 'Lucida Sans Typewriter', monospace;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   width: auto;
   height: auto;
-  background-color: #fff;
-  color: #000;
+  background-color: #282A37;
+  color: #45FC74;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
@@ -30,7 +30,7 @@
 /* GUTTER */
 
 .CodeMirror-gutters {
-  border-right: 1px solid #ddd;
+  /* border-right: 1px solid #ddd; */
   background-color: #eee;
 }
 .CodeMirror-linenumbers { }
@@ -66,7 +66,7 @@
 /* CURSOR */
 
 .CodeMirror div.CodeMirror-cursor {
-  border-left: 1px solid black;
+  border-left: 1px solid #00aaaa;
 }
 /* Shown when moving in bi-directional text */
 .CodeMirror div.CodeMirror-secondarycursor {
@@ -88,8 +88,8 @@
 
 /* DEFAULT THEME */
 
-.cm-s-default .cm-keyword {color: #00f;}
-.cm-s-default .cm-keyword-2 {color: #b0f;}
+.cm-s-default .cm-keyword {color: #55BAD0;}
+.cm-s-default .cm-keyword-2 {color: #FE71B5;}
 .cm-s-default .cm-keyword-3 {color: #12a2d4;}
 .cm-s-default .cm-atom {color: #00f;}
 .cm-s-default .cm-number {color: #12a2d4;}
@@ -177,6 +177,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-gutter {
   height: 100%;
   display: inline-block;
+  background-color: rgb(31, 33, 46);
   /* Hack to make IE7 behave */
   *zoom:1;
   *display:inline;
@@ -217,8 +218,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   z-index: 0;
 }
 .CodeMirror-activeline-background {
-	border: 1px solid #aacfff;
-	background: #f2f6fa !important;
+	/* border: 1px solid #aacfff; */
+	background: #3C4556 !important;
 }
 .CodeMirror-linewidget {
   position: relative;
