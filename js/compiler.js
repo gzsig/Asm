@@ -219,26 +219,40 @@ function renderRegister() {
 }
 
 let terminalHistory = document.getElementById("term-his");
-terminalHistory.value = Date() + '\n'
+terminalHistory.innerHTML = Date() + "<br>";
 function terminalComands() {
-  let terminal = document.getElementById("terminal");
+  let terminal = document.getElementById("terminal-input");
   switch (terminal.value) {
+    case "":
+      break
     case "compile()":
-      compile();
-      terminalHistory.value += `➜ root ${terminal.value}\n`
-      terminal.value = ""
+      if(compile() == null){
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
+        terminal.value = "";
+        setTimeout(() => {
+          compile();
+        }, 50);
+      } 
+      else {
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> ${compile()} </span> <br>`;
+        terminal.value = "";
+      }
       break;
     case "step()":
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
+      terminal.value = "";
       step();
-      terminalHistory.value += `➜ root ${terminal.value}\n`
-      terminal.value = ""
       break;
     case "execute()":
-      execute();
-      terminalHistory.value += `➜ root ${terminal.value}\n`
-      terminal.value = ""
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
+      terminal.value = "";
+      setTimeout(() => {
+        execute();
+      }, 50);
       break;
     default:
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> ${terminal.value}<br>myTerm: command not found: ${terminal.value} `;
+      terminal.value = "";
       break;
   }
 }
@@ -251,4 +265,7 @@ function toggleRam() {
 }
 function toggleVariables() {
   document.getElementById("variables").classList.toggle("hide-element");
+}
+function toggleTerminal() {
+  document.getElementById("terminal-wrapper").classList.toggle("hide-element");
 }

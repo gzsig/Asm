@@ -6,7 +6,7 @@ html {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: rgb(54, 60, 76)
+  background-color: rgb(54, 60, 76);
 }
 
 body {
@@ -25,6 +25,28 @@ nav {
   min-height: 400px;
 }
 
+#terminal-input {
+  width: calc(100% - 60px);
+  border: 0;
+  background-color: #282a37;
+  color: #fff;
+}
+
+#terminal-input:focus {
+  outline: none;
+}
+
+
+#terminal-wrapper {
+  background-color: #282a37;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 3px;
+  border-radius: 3px;
+  color: #fff;
+}
+
 .box {
   border: solid 1px #000;
   border-radius: 5px;
@@ -39,12 +61,12 @@ nav {
 .info {
   height: 98vh;
   min-width: 124px;
-  background-color: #282A37;
+  background-color: #282a37;
   overflow: scroll;
-  color: #fff
+  color: #fff;
 }
 
-.info-container{
+.info-container {
   display: flex;
   justify-content: space-between;
 }
@@ -68,7 +90,7 @@ nav {
 }
 
 .var {
-  color: #45FC74;
+  color: #45fc74;
 }
 
 .wrapper {
@@ -84,10 +106,11 @@ nav {
     min-height: 400px;
   }
 
-.info {
-  height: auto;
-}
+  .info {
+    height: auto;
+  }
 
+  
   .wrapper {
     flex-direction: column-reverse;
     background-color: red;

@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head data-nores="1">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <title>Assembly Emulator</title>
+<head data-nores="1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link rel="stylesheet" href="./css/codemirror.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script
-      type="text/javascript"
-      charset="utf-8"
-      src="./js/codemirror.js"
-    ></script>
-    <script
-      type="text/javascript"
-      charset="utf-8"
-      src="./js/active-line.js"
-    ></script>
-    <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
-  </head>
+  <title>Assembly Emulator</title>
 
-  <body>
-    <nav>
-      Asm 24bits
+  <link rel="stylesheet" href="./css/codemirror.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script type="text/javascript" charset="utf-8" src="./js/codemirror.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/active-line.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
+</head>
 
-      <button onclick="toggleEditor()">Toggle Editor</button>
-      <button onclick="toggleRam()">Toggle RAM</button>
-      <button onclick="toggleVariables()">Toggle Variables</button>
-    </nav>
-    <div class="wrapper">
-      <div class="info-container">
+<body>
+  <nav>
+    Asm 24bits
+
+    <button onclick="toggleEditor()">Toggle Editor</button>
+    <button onclick="toggleRam()">Toggle RAM</button>
+    <button onclick="toggleVariables()">Toggle Variables</button>
+    <button onclick="toggleTerminal()">Toggle Terminal</button>
+  </nav>
+  <div class="wrapper">
+    <div class="info-container">
       <div id="ram" class="info">
         <p>RAM</p>
       </div>
@@ -40,23 +34,25 @@
       </div>
     </div>
     <div class="resgister-and-btns">
-      <textarea name="" id="term-his" cols="30" rows="10" disabled></textarea>
-      <input type="text" id="terminal" onblur="terminalComands()">
-        <div>
-          <button onclick="compile()">compile</button>
-          <button onclick="step()">step</button>
-          <button onclick="execute()">execute</button>
-        </div>
-        <div class="register box">
-          <div>ac: <span id="ac"></span></div>
-          <div>ra: <span id="ra"></span></div>
-          <div>ic: <span id="ic"></span></div>
-          <!-- <div> ir: <span id="ir"></span></div> -->
-          <div>op: <span id="op"></span></div>
-          <div>oi: <span id="oi"></span></div>
-        </div>
+      <div id="terminal-wrapper">
+        <div id="term-his"></div>
+        <span> <span style="color: green" >➜</span> <span style="color: #55BAD0 "> root </span><input type="text" id="terminal-input" autofocus onblur="terminalComands()"> </span>
       </div>
-      <textarea id="codeEditor" spellcheck="false">
+      <div>
+        <button onclick="compile()">compile</button>
+        <button onclick="step()">step</button>
+        <button onclick="execute()">execute</button>
+      </div>
+      <div class="register box">
+        <div>ac: <span id="ac"></span></div>
+        <div>ra: <span id="ra"></span></div>
+        <div>ic: <span id="ic"></span></div>
+        <!-- <div> ir: <span id="ir"></span></div> -->
+        <div>op: <span id="op"></span></div>
+        <div>oi: <span id="oi"></span></div>
+      </div>
+    </div>
+    <textarea id="codeEditor" spellcheck="false">
 lv 0x0006
 stor myvar
 lv 0x0000
@@ -71,12 +67,12 @@ div 0x0002
 rc
 
 myvar:
-	</textarea
-      >
-    </div>
+	</textarea>
+  </div>
 
-    <script type="text/javascript" src="./js/setup.js"></script>
-    <script type="text/javascript" src="./js/compiler.js"></script>
-    <script type="text/javascript" src="./js/instructions.js"></script>
-  </body>
+  <script type="text/javascript" src="./js/setup.js"></script>
+  <script type="text/javascript" src="./js/compiler.js"></script>
+  <script type="text/javascript" src="./js/instructions.js"></script>
+</body>
+
 </html>
