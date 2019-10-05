@@ -144,6 +144,7 @@ function compile() {
   }
 
   handelRam()
+  handelLabels()
 
   return null;
 }
@@ -168,13 +169,42 @@ function execute() {
 
 function handelRam() {
   let ram = document.getElementById("ram")
-  ram.innerHTML = ""
+  ram.innerHTML = "<p>RAM</p>"
   for(let i = 0; i<memory.length; i++){
     if(memory[i] != 0){
-      let value = document.createElement("p")
-      value.innerHTML = `0x${format16(i)}: ${format16(memory[i])}`
-      ram.appendChild(value)
+      let value = document.createElement("span")
+      let addr = document.createElement("span")
+      let line = document.createElement("p")
+      addr.setAttribute("class", "hex-num")
+      addr.innerHTML = `0x${format16(i)}`
+      value.innerHTML = `: ${format16(memory[i])}`
+      line.appendChild(addr)
+      line.appendChild(value)
+      ram.appendChild(line)
     }
+  }
+}
+
+function handelLabels(){
+  let variables = document.getElementById('variables')
+  variables.innerHTML = "<p>Variables</p>"
+  for (let label in labels){
+    let name = document.createElement("span")
+    let addr = document.createElement("span")
+    let varToken = document.createElement("span")
+    let line = document.createElement("p")
+    varToken.setAttribute("style", "color: #f00")
+    name.setAttribute('class', "var")
+    addr.setAttribute("class", "hex-num")
+
+
+    name.innerHTML = `${label}`
+    varToken.innerHTML =": "
+    addr.innerHTML =  `0x${format16(labels[label])}`
+    line.appendChild(name)
+    line.appendChild(varToken)
+    line.appendChild(addr)
+    variables.appendChild(line)
   }
 }
 
@@ -194,4 +224,7 @@ function toggleEditor() {
 }
 function toggleRam() {
   document.getElementById("ram").classList.toggle("hide-element");
+}
+function toggleVariables() {
+  document.getElementById("variables").classList.toggle("hide-element");
 }
