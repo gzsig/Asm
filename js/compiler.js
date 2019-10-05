@@ -97,7 +97,7 @@ function compile() {
     var arg = 0,
       argNumber = true;
     if (tokens.length > 1) {
-      if (tokens[1].substr(0,2) == "0x"){
+      if (tokens[1].substr(0, 2) == "0x") {
         arg = parseInt(tokens[1], 16);
       } else {
         arg = tokens[1];
@@ -143,8 +143,8 @@ function compile() {
     memory[i] = p.arg;
   }
 
-  handelRam()
-  handelLabels()
+  handelRam();
+  handelLabels();
 
   return null;
 }
@@ -159,7 +159,7 @@ function step() {
   var p = program[registers.ic];
   p.instruction.f(p.arg);
   renderRegister();
-  handelRam()
+  handelRam();
 }
 
 function execute() {
@@ -168,43 +168,42 @@ function execute() {
 }
 
 function handelRam() {
-  let ram = document.getElementById("ram")
-  ram.innerHTML = "<p>RAM</p>"
-  for(let i = 0; i<memory.length; i++){
-    if(memory[i] != 0){
-      let value = document.createElement("span")
-      let addr = document.createElement("span")
-      let line = document.createElement("p")
-      addr.setAttribute("class", "hex-num")
-      addr.innerHTML = `0x${format16(i)}`
-      value.innerHTML = `: ${format16(memory[i])}`
-      line.appendChild(addr)
-      line.appendChild(value)
-      ram.appendChild(line)
+  let ram = document.getElementById("ram");
+  ram.innerHTML = "<p>RAM</p>";
+  for (let i = 0; i < memory.length; i++) {
+    if (memory[i] != 0) {
+      let value = document.createElement("span");
+      let addr = document.createElement("span");
+      let line = document.createElement("p");
+      addr.setAttribute("class", "hex-num");
+      addr.innerHTML = `0x${format16(i)}`;
+      value.innerHTML = `: ${format16(memory[i])}`;
+      line.appendChild(addr);
+      line.appendChild(value);
+      ram.appendChild(line);
     }
   }
 }
 
-function handelLabels(){
-  let variables = document.getElementById('variables')
-  variables.innerHTML = "<p>Variables</p>"
-  for (let label in labels){
-    let name = document.createElement("span")
-    let addr = document.createElement("span")
-    let varToken = document.createElement("span")
-    let line = document.createElement("p")
-    varToken.setAttribute("style", "color: #f00")
-    name.setAttribute('class', "var")
-    addr.setAttribute("class", "hex-num")
+function handelLabels() {
+  let variables = document.getElementById("variables");
+  variables.innerHTML = "<p>Variables</p>";
+  for (let label in labels) {
+    let name = document.createElement("span");
+    let addr = document.createElement("span");
+    let varToken = document.createElement("span");
+    let line = document.createElement("p");
+    varToken.setAttribute("style", "color: #f00");
+    name.setAttribute("class", "var");
+    addr.setAttribute("class", "hex-num");
 
-
-    name.innerHTML = `${label}`
-    varToken.innerHTML =": "
-    addr.innerHTML =  `0x${format16(labels[label])}`
-    line.appendChild(name)
-    line.appendChild(varToken)
-    line.appendChild(addr)
-    variables.appendChild(line)
+    name.innerHTML = `${label}`;
+    varToken.innerHTML = ": ";
+    addr.innerHTML = `0x${format16(labels[label])}`;
+    line.appendChild(name);
+    line.appendChild(varToken);
+    line.appendChild(addr);
+    variables.appendChild(line);
   }
 }
 
@@ -217,6 +216,31 @@ function renderRegister() {
   document.getElementById("ac").innerHTML = format16(registers.ac);
   // registers.end = false;
   // registers.stack = [];
+}
+
+let terminalHistory = document.getElementById("term-his");
+terminalHistory.value = Date() + '\n'
+function terminalComands() {
+  let terminal = document.getElementById("terminal");
+  switch (terminal.value) {
+    case "compile()":
+      compile();
+      terminalHistory.value += `➜ root ${terminal.value}\n`
+      terminal.value = ""
+      break;
+    case "step()":
+      step();
+      terminalHistory.value += `➜ root ${terminal.value}\n`
+      terminal.value = ""
+      break;
+    case "execute()":
+      execute();
+      terminalHistory.value += `➜ root ${terminal.value}\n`
+      terminal.value = ""
+      break;
+    default:
+      break;
+  }
 }
 
 function toggleEditor() {
