@@ -10,4 +10,3 @@ function typeWriter(txt) {
     } else {clearInterval(typingId)}
   }, speed);
 }
-typeWriter("");

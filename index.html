@@ -20,7 +20,6 @@
 <body>
   <nav>
     Asm 24bits
-
     <button onclick="toggleEditor()">Toggle Editor</button>
     <button onclick="toggleRam()">Toggle RAM</button>
     <button onclick="toggleVariables()">Toggle Variables</button>
@@ -37,7 +36,7 @@
     </div>
     <div class="resgister-and-btns">
       <div id="comunication"></div>
-      <div id="terminal-wrapper">
+      <div id="terminal-wrapper" onclick="targetTerm()">
         <div id="term-his"></div>
         <span> <span style="color: green">➜</span> <span style="color: #55BAD0 "> root </span><input type="text"
             id="terminal-input" autofocus onblur="terminalComands()"> </span>
@@ -56,9 +55,7 @@
         <div>oi: <span id="oi"></span></div>
       </div>
     </div>
-    <textarea id="codeEditor" spellcheck="false">
-
-	</textarea>
+    <textarea id="codeEditor" spellcheck="false"></textarea>
   </div>
   <script type="text/javascript" src="./js/setup.js"></script>
   <script type="text/javascript" src="./js/compiler.js"></script>

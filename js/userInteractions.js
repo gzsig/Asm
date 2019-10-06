@@ -106,7 +106,20 @@ function toggleTerminal() {
   document.getElementById("terminal-wrapper").classList.toggle("hide-element");
 }
 
+function targetTerm() {
+  let termInput = document.getElementById("terminal-input")
+    termInput.focus()
+}
 
 function welcome(){
-  typeWriter(`Welcome to _______. Glad your here. for a full documentation check out the full doc here: https://github.com/gzsig/Asm/blob/master/README.md` )
+  let msg ="Welcome to _______. Glad your here. for a full documentation check out the full doc "
+  typeWriter(msg)
+  setTimeout(()=>{
+    let docLink = document.createElement("a")
+    docLink.setAttribute("href", "https://github.com/gzsig/Asm/blob/master/README.md")
+    docLink.setAttribute("target", "_blank")
+    let com =document.getElementById('comunication')
+    docLink.innerHTML = "here"
+    com.appendChild(docLink)
+  },msg.length * 16)
 }
