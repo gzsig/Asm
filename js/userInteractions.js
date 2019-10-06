@@ -1,7 +1,6 @@
-window.onload = ()=>{
-  welcome()
-}
-
+window.onload = () => {
+  welcome();
+};
 
 function handelRam() {
   let ram = document.getElementById("ram");
@@ -54,22 +53,27 @@ function renderRegister() {
   // registers.stack = [];
 }
 
+function isEnter(event) {
+  if (event.keyCode === 13 || event.which === 13) {
+    terminalComands();
+  }
+}
+
 let terminalHistory = document.getElementById("term-his");
 terminalHistory.innerHTML = Date() + "<br>";
 function terminalComands() {
   let terminal = document.getElementById("terminal-input");
   switch (terminal.value) {
     case "":
-      break
+      break;
     case "compile()":
-      if(compile() == null){
+      if (compile() == null) {
         terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
         terminal.value = "";
         setTimeout(() => {
           compile();
         }, 50);
-      } 
-      else {
+      } else {
         terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> ${compile()} </span> <br>`;
         terminal.value = "";
       }
@@ -107,19 +111,23 @@ function toggleTerminal() {
 }
 
 function targetTerm() {
-  let termInput = document.getElementById("terminal-input")
-    termInput.focus()
+  let termInput = document.getElementById("terminal-input");
+  termInput.focus();
 }
 
-function welcome(){
-  let msg ="Welcome to _______. Glad your here. for a full documentation check out the full doc "
-  typeWriter(msg)
-  setTimeout(()=>{
-    let docLink = document.createElement("a")
-    docLink.setAttribute("href", "https://github.com/gzsig/Asm/blob/master/README.md")
-    docLink.setAttribute("target", "_blank")
-    let com =document.getElementById('comunication')
-    docLink.innerHTML = "here"
-    com.appendChild(docLink)
-  },msg.length * 16)
+function welcome() {
+  let msg =
+    "Welcome to _______. Glad your here. for a full documentation check out the full doc ";
+  typeWriter(msg);
+  setTimeout(() => {
+    let docLink = document.createElement("a");
+    docLink.setAttribute(
+      "href",
+      "https://github.com/gzsig/Asm/blob/master/README.md"
+    );
+    docLink.setAttribute("target", "_blank");
+    let com = document.getElementById("comunication");
+    docLink.innerHTML = "here";
+    com.appendChild(docLink);
+  }, msg.length * 16);
 }

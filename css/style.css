@@ -73,7 +73,7 @@ nav {
   color: #fff;
   font: normal 14px Consolas, "Lucida Console", "Lucida Sans Typewriter",
     monospace;
-    min-height: 400px;
+  min-height: 400px;
 }
 
 .info-container {
@@ -108,7 +108,7 @@ nav {
   justify-content: space-between;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   #codeEditor {
     position: relative;
     width: 100vw;
@@ -124,6 +124,7 @@ nav {
   .info {
     height: auto;
     width: 50%;
+    min-height: 0px;
   }
 
   .resgister-and-btns {
