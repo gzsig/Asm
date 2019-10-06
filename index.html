@@ -8,6 +8,8 @@
 
   <title>Assembly Emulator</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/codemirror.css" />
   <link rel="stylesheet" href="./css/style.css" />
   <script type="text/javascript" charset="utf-8" src="./js/codemirror.js"></script>
@@ -34,15 +36,17 @@
       </div>
     </div>
     <div class="resgister-and-btns">
+      <div id="comunication"></div>
       <div id="terminal-wrapper">
         <div id="term-his"></div>
-        <span> <span style="color: green" >➜</span> <span style="color: #55BAD0 "> root </span><input type="text" id="terminal-input" autofocus onblur="terminalComands()"> </span>
+        <span> <span style="color: green">➜</span> <span style="color: #55BAD0 "> root </span><input type="text"
+            id="terminal-input" autofocus onblur="terminalComands()"> </span>
       </div>
-      <div>
+      <!-- <div>
         <button onclick="compile()">compile</button>
         <button onclick="step()">step</button>
         <button onclick="execute()">execute</button>
-      </div>
+      </div> -->
       <div class="register box">
         <div>ac: <span id="ac"></span></div>
         <div>ra: <span id="ra"></span></div>
@@ -53,7 +57,19 @@
       </div>
     </div>
     <textarea id="codeEditor" spellcheck="false">
-lv 0x0006
+
+	</textarea>
+  </div>
+  <script type="text/javascript" src="./js/setup.js"></script>
+  <script type="text/javascript" src="./js/compiler.js"></script>
+  <script type="text/javascript" src="./js/instructions.js"></script>
+  <script type="text/javascript" src="./js/userInteractions.js"></script>
+  <script type="text/javascript" src="./js/typewriter.js"></script>
+</body>
+
+</html>
+
+<!-- lv 0x0006
 stor myvar
 lv 0x0000
 sc myfunc
@@ -66,13 +82,4 @@ load myvar
 div 0x0002
 rc
 
-myvar:
-	</textarea>
-  </div>
-
-  <script type="text/javascript" src="./js/setup.js"></script>
-  <script type="text/javascript" src="./js/compiler.js"></script>
-  <script type="text/javascript" src="./js/instructions.js"></script>
-</body>
-
-</html>
+myvar: -->

@@ -25,8 +25,14 @@ nav {
   min-height: 400px;
 }
 
+#comunication {
+  font-family: "Cutive Mono", monospace;
+  font-size: 14px;
+  color: #fff;
+}
+
 #terminal-input {
-  width: calc(100% - 60px);
+  width: calc(100% - 70px);
   border: 0;
   background-color: #282a37;
   color: #fff;
@@ -36,7 +42,6 @@ nav {
   outline: none;
 }
 
-
 #terminal-wrapper {
   background-color: #282a37;
   height: 200px;
@@ -45,6 +50,8 @@ nav {
   padding: 3px;
   border-radius: 3px;
   color: #fff;
+  font: normal 14px Consolas, "Lucida Console", "Lucida Sans Typewriter",
+    monospace;
 }
 
 .box {
@@ -64,6 +71,9 @@ nav {
   background-color: #282a37;
   overflow: scroll;
   color: #fff;
+  font: normal 14px Consolas, "Lucida Console", "Lucida Sans Typewriter",
+    monospace;
+    min-height: 400px;
 }
 
 .info-container {
@@ -84,7 +94,7 @@ nav {
 .resgister-and-btns {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 30%;
 }
@@ -106,13 +116,22 @@ nav {
     min-height: 400px;
   }
 
-  .info {
-    height: auto;
+  .hide-element {
+    display: none;
+    /* visibility: hidden; */
   }
 
-  
+  .info {
+    height: auto;
+    width: 50%;
+  }
+
+  .resgister-and-btns {
+    width: 100vw;
+    margin: 4px 0 0 0;
+  }
+
   .wrapper {
     flex-direction: column-reverse;
-    background-color: red;
   }
 }
