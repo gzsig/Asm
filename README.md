@@ -17,7 +17,7 @@
 
   * `jz`: Jump if the value of the accumulator (AC) is 0. Receives one variable as parameter and will execute the code starting from  line below if the value of the AC is zero. If the value of the AC is NOT zero the next line will be executed.
     * usage → 
-          ```js
+      ```js
       jz myvar
       // skips this code (if ac is 0)
       lv 0x0004
@@ -27,7 +27,7 @@
 
   * `jnz`: Jump if the value of the accumulator (AC) is NOT 0. Receives one variable as parameter and will execute the code starting from  line below if the value of the AC isn't zero. If the value of the AC is zero the next line will be executed.
     * usage → 
-          ```js
+      ```js
       jz myvar
       // skips this code (if AC is not 0)
       lv 0x0004
