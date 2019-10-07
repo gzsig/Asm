@@ -193,8 +193,9 @@ var instructions = {
     f: function(arg) {
       var dest = arg & 0xfff;
       if (dest < program.length && !program[dest].isLabel) {
-        throw "Não é permitido sobrescrever a instrução no endereço " +
-          arg.toString(16);
+        let terminalHistory = document.getElementById("term-his");
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Não é permitido sobrescrever a instrução no endereço ${arg.toString(16)} </span> <br>`;
+        terminal.value = "";
       }
       var fmt = format16(dest);
       memory[dest] = registers.ac;
@@ -210,7 +211,14 @@ var instructions = {
     argCount: 1,
     f: function(arg) {
       if (registers.stack.length >= 16) {
-        throw "Stack overflow";
+
+
+        let terminalHistory = document.getElementById("term-his");
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Stack overflow </span> <br>`;
+        terminal.value = "";
+
+
+        // throw "Stack overflow";
       }
       var dest = arg & 0xfff;
       var fmt = format16(dest);
@@ -227,7 +235,14 @@ var instructions = {
     argCount: 0,
     f: function() {
       if (!registers.stack.length) {
-        throw "Stack underflow";
+        
+        
+        let terminalHistory = document.getElementById("term-his");
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Stack underflow </span> <br>`;
+        terminal.value = "";
+        
+        
+        // throw "Stack underflow";
       }
       registers.ra = registers.ic;
       registers.ic = registers.stack.pop();
