@@ -5,29 +5,62 @@
   * `nop`: Blank memory slot
       * usage → `nop`
 
-  * `jmp`: Unconditional jump. Receives one variable as parameter
-      * usage → `jmp myvar`
+  * `jmp`: Unconditional jump. Receives one variable as parameter and will execute the code starting from  line below.
+      * usage → 
+      ```js
+      jmp myvar
+      // skips this code
+      lv 0x0004
+      myvar:
+      //your code that will be executed
+      ```
 
-  * `jz`: Jump if the value of the accumulator is 0
-    * usage → `jz myvar`
+  * `jz`: Jump if the value of the accumulator (AC) is 0. Receives one variable as parameter and will execute the code starting from  line below if the value of the AC is zero. If the value of the AC is NOT zero the next line will be executed.
+    * usage → 
+          ```js
+      jz myvar
+      // skips this code (if ac is 0)
+      lv 0x0004
+      myvar:
+      //your code that will be executed
+      ```
 
-  * `jnz`: Jump if the value of the accumulator is NOT 0
-    * usage → `jnz myvar`
+  * `jnz`: Jump if the value of the accumulator (AC) is NOT 0. Receives one variable as parameter and will execute the code starting from  line below if the value of the AC isn't zero. If the value of the AC is zero the next line will be executed.
+    * usage → 
+          ```js
+      jz myvar
+      // skips this code (if AC is not 0)
+      lv 0x0004
+      myvar:
+      //your code that will be executed
+      ```
 
-  * `lv`: Load a constant directly to the accumulator
-    * usage → `lv 0x0007`
+  * `lv`: Load a constant directly to the accumulator. Receives one constant in hexadecimal notation `0x00F2` for example
+    * usage → `lv 0x00F2`
 
-  * `add`: Add a constant to the value of the accumulator
-    * usage → `add 0x0007`
+  * `add`: Add a constant to the value of the accumulator. Receives one constant in hexadecimal notation `0x00FA` for example
+    * usage → `add 0x00FA`
 
-  * `addm`: Add a variable to the value of the accumulator
-    * usage → `addm myvar`
+  * `addm`: Receives one variable as parameter and Adds the value of the variable to the value of the accumulator. 
+    * usage → 
+    ```js
+    lv 0x0003
+    addm myvar
+    // some code 
+    myvar: 0x0F3B
+    ```
 
-  * `sub`: Subtract a constant to the value of the accumulator
-    * usage → `sub 0x0007`
+  * `sub`: Subtract a constant from the value of the accumulator. Receives one constant in hexadecimal notation `0x00FA` for example
+    * usage → `sub 0x00FA`
 
-  * `subm`: Add a variable to the value of the accumulator
-    * usage → `subm myvar`
+  * `subm`: Receives one variable as parameter and Subtracts the value of the variable from the value of the accumulator. 
+    * usage → 
+    ```js
+    lv 0x0003
+    subm myvar
+    // some code 
+    myvar: 0x0F3B
+    ```
 
   * `mul`: Multiply a constant to the value of the accumulator
     * usage → `mul 0x0007`
@@ -41,8 +74,13 @@
   * `divm`: Divide the value of the accumulator by a variable
     * usage → `divm myvar`
 
-  * `load`: Load a variable directly to the accumulator
-    * usage → `load myvar`
+  * `load`: Receives one variable as parameter and loads the value of the variable to the accumulator
+    * usage → 
+    ```js
+    load myvar // the value 00A2 will be loaded to the AC
+    // some code
+    myvar: 0x00A2
+    ```
 
   * `stor`: Stor the current value of the accumulator to a variable
     * usage → `stor myvar`
@@ -86,3 +124,8 @@ myfunc:
 div 0x0002
 rc
 ```
+### Comments
+---
+###### comment
+To comment any line use the `;` token and any following comand will be commented
+

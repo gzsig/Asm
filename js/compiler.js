@@ -170,5 +170,3 @@ function execute() {
   while (!registers.end) step();
   renderRegister();
 }
-
-// arg = memory[program.length]
