@@ -66,14 +66,14 @@ nav {
 }
 
 .info {
-  height: 98vh;
+  height: 49vh;
   min-width: 124px;
   background-color: #282a37;
   overflow: scroll;
   color: #fff;
   font: normal 14px Consolas, "Lucida Console", "Lucida Sans Typewriter",
     monospace;
-  min-height: 400px;
+  min-height: 200px;
 }
 
 .info-container {

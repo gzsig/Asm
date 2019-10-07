@@ -25,7 +25,7 @@ var instructions = {
     }
   },
   jz: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var dest = arg & 0xfff;
@@ -39,7 +39,7 @@ var instructions = {
     }
   },
   jnz: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var dest = arg & 0xfff;
@@ -53,7 +53,7 @@ var instructions = {
     }
   },
   lv: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var fmt = format16(arg);
@@ -66,7 +66,7 @@ var instructions = {
     }
   },
   add: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var fmt = format16(arg);
@@ -79,7 +79,7 @@ var instructions = {
     }
   },
   addm: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var src = arg & 0xfff;
@@ -93,7 +93,7 @@ var instructions = {
     }
   },
   sub: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var fmt = format16(arg);
@@ -106,7 +106,7 @@ var instructions = {
     }
   },
   subm: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var src = arg & 0xfff;
@@ -120,7 +120,7 @@ var instructions = {
     }
   },
   mul: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var fmt = format16(arg);
@@ -133,7 +133,7 @@ var instructions = {
     }
   },
   mulm: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var src = arg & 0xfff;
@@ -147,7 +147,7 @@ var instructions = {
     }
   },
   div: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var fmt = format16(arg);
@@ -160,7 +160,7 @@ var instructions = {
     }
   },
   divm: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var src = arg & 0xfff;
@@ -174,7 +174,7 @@ var instructions = {
     }
   },
   load: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var src = arg & 0xfff;
@@ -188,13 +188,15 @@ var instructions = {
     }
   },
   stor: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       var dest = arg & 0xfff;
       if (dest < program.length && !program[dest].isLabel) {
         let terminalHistory = document.getElementById("term-his");
-        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Não é permitido sobrescrever a instrução no endereço ${arg.toString(16)} </span> <br>`;
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Não é permitido sobrescrever a instrução no endereço ${arg.toString(
+          16
+        )} </span> <br>`;
         terminal.value = "";
       }
       var fmt = format16(dest);
@@ -207,16 +209,13 @@ var instructions = {
     }
   },
   sc: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
       if (registers.stack.length >= 16) {
-
-
         let terminalHistory = document.getElementById("term-his");
         terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Stack overflow </span> <br>`;
         terminal.value = "";
-
 
         // throw "Stack overflow";
       }
@@ -231,17 +230,13 @@ var instructions = {
     }
   },
   rc: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 0,
     f: function() {
       if (!registers.stack.length) {
-        
-        
         let terminalHistory = document.getElementById("term-his");
         terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Stack underflow </span> <br>`;
         terminal.value = "";
-        
-        
         // throw "Stack underflow";
       }
       registers.ra = registers.ic;
@@ -252,7 +247,7 @@ var instructions = {
     }
   },
   end: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 0,
     f: function() {
       registers.end = true;
@@ -263,7 +258,7 @@ var instructions = {
     }
   },
   in: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 0,
     f: function() {
       let inAlertInput = parseInt(
@@ -283,7 +278,7 @@ var instructions = {
     }
   },
   out: {
-    hex:format8(instructionCount++),
+    hex: format8(instructionCount++),
     argCount: 0,
     f: function() {
       alert(format16(registers.ac));

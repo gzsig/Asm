@@ -141,10 +141,14 @@ function compile() {
       return "label " + p.arg + " nao definido na linha " + p.line;
     p.arg = labels[p.arg];
     memory[i] = p.arg;
+    p.hex = p.hex.substr(0,2) + format16(memory[i]);
+    p.str = `${p.str.split(" ")[0]} ${format16(memory[i])}`;
   }
 
   handelRam();
   handelLabels();
+  handelProgramMnemonic();
+  handelProgramAssembly();
 
   return null;
 }
@@ -166,3 +170,5 @@ function execute() {
   while (!registers.end) step();
   renderRegister();
 }
+
+// arg = memory[program.length]

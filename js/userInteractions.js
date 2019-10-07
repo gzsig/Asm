@@ -2,6 +2,43 @@ window.onload = () => {
   welcome();
 };
 
+function handelProgramMnemonic() {
+  let ram = document.getElementById("mnemonic");
+  ram.innerHTML = "<p>MNEMONIC</p>";
+  for (let i = 0; i < program.length; i++) {
+    if (program[i] != 0) {
+      let value = document.createElement("span");
+      let addr = document.createElement("span");
+      let line = document.createElement("p");
+      addr.setAttribute("class", "hex-num");
+      addr.innerHTML = `0x${format16(i)}`;
+      value.innerHTML = `: ${program[i].str}`;
+      line.appendChild(addr);
+      line.appendChild(value);
+      ram.appendChild(line);
+    }
+  }
+}
+
+function handelProgramAssembly() {
+  let ram = document.getElementById("assembly");
+  ram.innerHTML = "<p>ASSEMBLY</p>";
+  for (let i = 0; i < program.length; i++) {
+    if (program[i] != 0) {
+      let value = document.createElement("span");
+      let addr = document.createElement("span");
+      let line = document.createElement("p");
+      addr.setAttribute("class", "hex-num");
+      addr.innerHTML = `0x${format16(i)}`;
+      value.innerHTML = `: ${program[i].hex}`;
+      line.appendChild(addr);
+      line.appendChild(value);
+      ram.appendChild(line);
+    }
+  }
+}
+
+
 function handelRam() {
   let ram = document.getElementById("ram");
   ram.innerHTML = "<p>RAM</p>";
