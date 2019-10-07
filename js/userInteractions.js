@@ -59,6 +59,31 @@ function isEnter(event) {
   }
 }
 
+function isTab(event) {
+  if (event.keyCode === 9 || event.which === 9) {
+    event.preventDefault();
+    let comand = event.target.value;
+    let comandInput = document.getElementById(event.target.id);
+    if (shouldAutocomplete(comand, "compile()")) {
+      comandInput.value = "compile()";
+    } else if (shouldAutocomplete(comand, "step()")) {
+      comandInput.value = "step()";
+    } else if (shouldAutocomplete(comand, "execute()")) {
+      comandInput.value = "execute()";
+    }
+  }
+}
+
+function shouldAutocomplete(abrv, extended) {
+  let res = true;
+  for (let i = 0; i < abrv.length; i++) {
+    if (abrv[i] !== extended[i]) {
+      res = false;
+    }
+  }
+  return res;
+}
+
 let terminalHistory = document.getElementById("term-his");
 terminalHistory.innerHTML = Date() + "<br>";
 function terminalComands() {
