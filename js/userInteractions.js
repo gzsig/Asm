@@ -13,6 +13,7 @@ function handelProgramMnemonic() {
       addr.setAttribute("class", "hex-num");
       addr.innerHTML = `0x${format16(i)}`;
       value.innerHTML = `: ${program[i].str}`;
+      value.setAttribute("style", "font-size: 10px");
       line.appendChild(addr);
       line.appendChild(value);
       ram.appendChild(line);
@@ -37,7 +38,6 @@ function handelProgramAssembly() {
     }
   }
 }
-
 
 function handelRam() {
   let ram = document.getElementById("ram");
@@ -171,6 +171,12 @@ function toggleVariables() {
 function toggleTerminal() {
   document.getElementById("terminal-wrapper").classList.toggle("hide-element");
 }
+function toggleMnemonic() {
+  document.getElementById("mnemonic").classList.toggle("hide-element");
+}
+function toggleAssembly() {
+  document.getElementById("assembly").classList.toggle("hide-element");
+}
 
 function targetTerm() {
   let termInput = document.getElementById("terminal-input");
@@ -179,9 +185,8 @@ function targetTerm() {
 
 function welcome() {
   let msg =
-    "Welcome to _______. Glad your here. for a full documentation check out the full doc ";
-  typeWriter(msg);
-  setTimeout(() => {
+    "Welcome to ASM. Glad your here. for a full documentation check out the full doc ";
+  typeWriter(msg, () => {
     let docLink = document.createElement("a");
     docLink.setAttribute(
       "href",
@@ -191,5 +196,5 @@ function welcome() {
     let com = document.getElementById("comunication");
     docLink.innerHTML = "here";
     com.appendChild(docLink);
-  }, msg.length * 16);
+  });
 }

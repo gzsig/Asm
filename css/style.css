@@ -125,6 +125,7 @@ nav {
     height: auto;
     width: 50%;
     min-height: 0px;
+    max-height: 40vh;
   }
 
   .resgister-and-btns {

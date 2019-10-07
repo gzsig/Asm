@@ -1,4 +1,4 @@
-function typeWriter(txt) {
+function typeWriter(txt, f) {
   let i = 0;
   let speed = 15; /* The speed/duration of the effect in milliseconds */
   let printing = document.getElementById("comunication");
@@ -7,6 +7,9 @@ function typeWriter(txt) {
     if (i < txt.length) {
       printing.innerHTML += txt.charAt(i);
       i++;
-    } else {clearInterval(typingId)}
+    } else {
+      clearInterval(typingId)
+      f()
+    }
   }, speed);
 }

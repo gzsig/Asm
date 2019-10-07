@@ -30,6 +30,8 @@
   <body>
     <nav>
       Asm 24bits
+      <button onclick="toggleMnemonic()">Toggle Mnemonic</button>
+      <button onclick="toggleAssembly()">Toggle Assembly</button>
       <button onclick="toggleRam()">Toggle RAM</button>
       <button onclick="toggleVariables()">Toggle Variables</button>
       <button onclick="toggleTerminal()">Toggle Terminal</button>
@@ -38,7 +40,7 @@
     <div class="wrapper">
       <div>
       <div class="info-container">
-        <div id="mnemonic" class="info" style="font-size: 12px">
+        <div id="mnemonic" class="info">
           <p>Mnemonic</p>
         </div>
         <div id="assembly" class="info">
