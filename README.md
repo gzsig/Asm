@@ -5,6 +5,7 @@
 ### Terminal
 * MyTerm saves history so with the up and down key it navigates through recent.
 * MyTerm has autocomplete, on tab if there is a command that starts with the letters that have been typed it will autocomplte
+
 `compile()`
 
 `execute()`
