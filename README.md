@@ -3,8 +3,10 @@
 ## Documentation
 ---
 ### Terminal
-* MyTerm saves history so with the up and down key it navigates through recent.
+* MyTerm saves your history so with the up and down key it navigates through recent commands.
 * MyTerm has autocomplete, on tab if there is a command that starts with the letters that have been typed it will autocomplte
+
+###### Terminal Commands
 
 `compile()`
 
@@ -13,8 +15,9 @@
 `help()`
 
 `step()`
+
 ---
-### Commands
+### Asm Commands
   * `nop`: Blank memory slot
       * usage → `nop`
 
@@ -30,23 +33,23 @@
 
   * `jz`: Jump if the value of the accumulator (AC) is 0. Receives one variable as parameter and will execute the code starting from  line below if the value of the AC is zero. If the value of the AC is NOT zero the next line will be executed.
     * usage → 
-      ```js
-      jz myvar
-      // skips this code (if ac is 0)
-      lv 0x0004
-      myvar:
-      //your code that will be executed
-      ```
+    ```js
+    jz myvar
+    // skips this code (if ac is 0)
+    lv 0x0004
+    myvar:
+    //your code that will be executed
+    ```
 
   * `jnz`: Jump if the value of the accumulator (AC) is NOT 0. Receives one variable as parameter and will execute the code starting from  line below if the value of the AC isn't zero. If the value of the AC is zero the next line will be executed.
     * usage → 
-      ```js
-      jz myvar
-      // skips this code (if AC is not 0)
-      lv 0x0004
-      myvar:
-      //your code that will be executed
-      ```
+    ```js
+    jz myvar
+    // skips this code (if AC is not 0)
+     lv 0x0004
+     myvar:
+     //your code that will be executed
+     ```
 
   * `lv`: Load a constant directly to the accumulator. Receives one constant in hexadecimal notation `0x00F2` for example
     * usage → `lv 0x00F2`
@@ -142,7 +145,7 @@ rc
 ```
 
 ---
-### comment
+### Comment
 To comment any line use the `//` tokens and any following comand will be commented
 ```js
 //I am a comment
