@@ -50,7 +50,7 @@ function compile() {
   for (var i = 0; i < lines.length; i++) {
     var line = lines[i];
 
-    var comment = line.indexOf(";");
+    var comment = line.indexOf("/");
     if (comment >= 0) line = line.substr(0, comment);
     line = line.trim().toLowerCase();
 

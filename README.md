@@ -132,7 +132,7 @@ Call functions from any where in your code and for best practices declar functio
 ```js
 lv 0x0006
 sc myfunc
-out ;myfunc will jump back here
+out //myfunc will jump back here
 end
 
 myfunc:
@@ -142,22 +142,22 @@ rc
 
 ---
 ### comment
-To comment any line use the `;` token and any following comand will be commented
-```
-;I am a comment
+To comment any line use the `//` tokens and any following comand will be commented
+```js
+//I am a comment
 
 in
 stor mynum
-div 0x0002 ;divide the value of the accumulator by 2
+div 0x0002 //divide the value of the accumulator by 2
 mul 0x0002
 stor res
 load mynum
 subm res
-jz par ;If the value is note zero jump :)
+jz par //If the value is not zero jump :)
 lv 0x000
 end
 
-par: ;I'm a function
+par: //I'm a function
 lv 0x0001
 end
 

@@ -33,7 +33,7 @@ CodeMirror.defineMode("asm86", function ()
 				} else {
 					return null;
 				}
-			} else if (stream.eat(";")) {
+			} else if (stream.eat("/")) {
 				stream.skipToEnd();
 				return "comment";
 			} else if (stream.eat(",") || stream.eat(".") || stream.eat(":") || stream.eat("[") || stream.eat("]") || stream.eat("+") || stream.eat("-") || stream.eat("*")) {
