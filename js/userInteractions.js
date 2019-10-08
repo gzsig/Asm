@@ -2,6 +2,11 @@ window.onload = () => {
   welcome();
 };
 
+let terminalHistory = document.getElementById("term-his");
+terminalHistory.innerHTML = Date() + "<br>";
+let historyArr = [];
+let historyIndex = 0;
+
 function handelProgramMnemonic() {
   let ram = document.getElementById("mnemonic");
   ram.innerHTML = "<p>MNEMONIC</p>";
@@ -96,17 +101,49 @@ function isEnter(event) {
   }
 }
 
-function isTab(event) {
+function handleOnkeydown(event) {
   if (event.keyCode === 9 || event.which === 9) {
-    event.preventDefault();
-    let comand = event.target.value;
-    let comandInput = document.getElementById(event.target.id);
-    if (shouldAutocomplete(comand, "compile()")) {
-      comandInput.value = "compile()";
-    } else if (shouldAutocomplete(comand, "step()")) {
-      comandInput.value = "step()";
-    } else if (shouldAutocomplete(comand, "execute()")) {
-      comandInput.value = "execute()";
+    isTab(event);
+  } else if (event.keyCode === 38 || event.which === 38) {
+    getHistory(event, 1);
+  } else if (event.keyCode === 40 || event.which === 40) {
+    getHistory(event, 0);
+  }
+}
+
+function isTab(event) {
+  event.preventDefault();
+  let comand = event.target.value;
+  let comandInput = document.getElementById(event.target.id);
+  if (shouldAutocomplete(comand, "compile()")) {
+    comandInput.value = "compile()";
+  } else if (shouldAutocomplete(comand, "step()")) {
+    comandInput.value = "step()";
+  } else if (shouldAutocomplete(comand, "execute()")) {
+    comandInput.value = "execute()";
+  }
+}
+
+function getHistory(event, dir) {
+  let comandInput = document.getElementById(event.target.id);
+  event.preventDefault();
+  if (historyIndex >= 0 && dir == 1 && historyArr.length) {
+    if (historyIndex > 0) {
+      historyIndex--;
+    }
+    comandInput.value = historyArr[historyIndex];
+  } else if (
+    historyIndex < historyArr.length &&
+    dir == 0 &&
+    historyArr.length
+  ) {
+    if (historyIndex < historyArr.length) {
+      historyIndex++;
+      if (historyIndex == historyArr.length) {
+        comandInput.value = "";
+      } else {
+        comandInput.value = historyArr[historyIndex];
+      }
     }
   }
 }
@@ -121,10 +158,10 @@ function shouldAutocomplete(abrv, extended) {
   return res;
 }
 
-let terminalHistory = document.getElementById("term-his");
-terminalHistory.innerHTML = Date() + "<br>";
 function terminalComands() {
   let terminal = document.getElementById("terminal-input");
+  historyArr.push(terminal.value);
+  historyIndex = historyArr.length;
   switch (terminal.value) {
     case "":
       break;
