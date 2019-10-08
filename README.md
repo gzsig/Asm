@@ -8,13 +8,13 @@
 
 ###### Terminal Commands
 
-`compile()`
+`compile()` Will compile the program present in the editor and throw errors if there are any. 
 
-`execute()`
+`execute()` Will execute the program without stopping until the is an `end` token
 
-`help()`
+`help()` Will show available cammands
 
-`step()`
+`step()` Will execute the next line of the program
 
 ---
 ### Asm Commands
@@ -78,17 +78,29 @@
     myvar: 0x0F3B
     ```
 
-  * `mul`: Multiply a constant to the value of the accumulator
-    * usage → `mul 0x0007`
+  * `mul`: Multiply a constant from the value of the accumulator. Receives one constant in hexadecimal notation `0x00FA` for example
+    * usage → `mul 0x00FA`
 
-  * `mulm`: Multiply a variable to the value of the accumulator
-    * usage → `mulm myvar`
+  * `mulm`: Receives one variable as parameter and Multiplies the value of the variable with the value of the accumulator. 
+    * usage → 
+    ```js
+    lv 0x0003
+    mulm myvar
+    // some code 
+    myvar: 0x0F3B
+    ```
 
-  * `div`: Divide a constant to the value of the accumulator
-    * usage → `div 0x0007`
+  * `div`: Divides the value of the accumulator by a constant. Receives one constant in hexadecimal notation as parameter, `0x00FA` for example
+    * usage → `mul 0x00FA`
 
-  * `divm`: Divide the value of the accumulator by a variable
-    * usage → `divm myvar`
+  * `divm`: Receives one variable as parameter and Divides the value of the accumulator by value of the variable. 
+    * usage → 
+    ```js
+    lv 0x0003
+    divm myvar
+    // some code 
+    myvar: 0x0F3B
+    ```
 
   * `load`: Receives one variable as parameter and loads the value of the variable to the accumulator
     * usage → 
@@ -99,8 +111,13 @@
     ```
 
   * `stor`: Stor the current value of the accumulator to a variable
-    * usage → `stor myvar`
-
+    * usage → 
+    ```js
+    lv 0x00E2
+    stor myvar
+    // some code
+    myvar: //will receive the value 00E2
+    ```
   * `sc`: Function call
       * usage → `sc myfunc`
 
