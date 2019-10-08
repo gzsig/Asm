@@ -9,7 +9,7 @@ let historyIndex = 0;
 
 function handelProgramMnemonic() {
   let ram = document.getElementById("mnemonic");
-  ram.innerHTML = "<p>MNEMONIC</p>";
+  ram.innerHTML = "<p>PROGRAM</p>";
   for (let i = 0; i < program.length; i++) {
     if (program[i] != 0) {
       let value = document.createElement("span");
@@ -46,7 +46,7 @@ function handelProgramAssembly() {
 
 function handelRam() {
   let ram = document.getElementById("ram");
-  ram.innerHTML = "<p>RAM</p>";
+  ram.innerHTML = "<p>VALUES</p>";
   for (let i = 0; i < memory.length; i++) {
     if (memory[i] != 0) {
       let value = document.createElement("span");
@@ -64,7 +64,7 @@ function handelRam() {
 
 function handelLabels() {
   let variables = document.getElementById("variables");
-  variables.innerHTML = "<p>Variables</p>";
+  variables.innerHTML = "<p>VARIABLES</p>";
   for (let label in labels) {
     let name = document.createElement("span");
     let addr = document.createElement("span");
@@ -222,7 +222,7 @@ function targetTerm() {
 
 function welcome() {
   let msg =
-    "Welcome to ASM. Glad your here. for a full documentation check out the full doc ";
+    "Welcome to ASM. Glad your here. For a full documentation check out the ";
   typeWriter(msg, () => {
     let docLink = document.createElement("a");
     docLink.setAttribute(
@@ -230,8 +230,9 @@ function welcome() {
       "https://github.com/gzsig/Asm/blob/master/README.md"
     );
     docLink.setAttribute("target", "_blank");
+    docLink.setAttribute("style", "color: #45FC74; text-decoration: none");
     let com = document.getElementById("comunication");
-    docLink.innerHTML = "here";
+    docLink.innerHTML = "DOCS";
     com.appendChild(docLink);
   });
 }
