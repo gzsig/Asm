@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head data-nores="1">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <title>Assembly Emulator</title>
+<head data-nores="1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap"
-      rel="stylesheet"
-    />
+  <title>Assembly Emulator</title>
 
-    <link rel="stylesheet" href="./css/codemirror.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script
-      type="text/javascript"
-      charset="utf-8"
-      src="./js/codemirror.js"
-    ></script>
-    <script
-      type="text/javascript"
-      charset="utf-8"
-      src="./js/active-line.js"
-    ></script>
-    <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
-  </head>
+  <link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet" />
 
-  <body>
-    <nav>
-      Asm 24bits
-      <button onclick="toggleMnemonic()">Toggle Mnemonic</button>
-      <button onclick="toggleAssembly()">Toggle Assembly</button>
-      <button onclick="toggleRam()">Toggle RAM</button>
-      <button onclick="toggleVariables()">Toggle Variables</button>
-      <button onclick="toggleTerminal()">Toggle Terminal</button>
-      <button onclick="toggleEditor()">Toggle Editor</button>
-    </nav>
-    <div class="wrapper">
+  <link rel="stylesheet" href="./css/codemirror.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/button.css">
+
+  <script type="text/javascript" charset="utf-8" src="./js/codemirror.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/active-line.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
+</head>
+
+<body>
+  <div class="nav-bar">
+    Asm 24bits
+    <button class="figure" onclick="toggleSidebar()">
       <div>
+        <bla>WINDOWS</bla>
+      </div>
+    </button>
+  </div>
+
+  <div class="wrapper">
+    <div>
       <div class="info-container">
         <div id="mnemonic" class="info">
           <p>PROGRAM</p>
@@ -56,35 +48,48 @@
         </div>
       </div>
     </div>
-      <div class="resgister-and-btns">
-        <div id="comunication"></div>
-        <div id="terminal-wrapper" onclick="targetTerm()">
-          <div id="term-his"></div>
-          <span>
-            <span style="color: green">➜</span>
-            <span style="color: #55BAD0 "> root </span>
-            <input
-              type="text"
-              id="terminal-input"
-              autofocus
-              onkeypress="isEnter(event)"
-              onkeydown="handleOnkeydown(event)"
-              autocomplete="off"
-          /></span>
-        </div>
-        <!-- <div>
+    <div class="resgister-and-btns">
+      <div id="comunication"></div>
+      <div id="terminal-wrapper" onclick="targetTerm()">
+        <div id="term-his"></div>
+        <span>
+          <span style="color: green">➜</span>
+          <span style="color: #55BAD0 "> root </span>
+          <input type="text" id="terminal-input" autofocus onkeypress="isEnter(event)"
+            onkeydown="handleOnkeydown(event)" autocomplete="off" /></span>
+      </div>
+      <!-- <div>
         <button onclick="compile()">compile</button>
         <button onclick="step()">step</button>
         <button onclick="execute()">execute</button>
       </div> -->
-        <div class="register box">
-          <div>ac: <span id="ac"></span></div>
-          <div>ra: <span id="ra"></span></div>
-          <div>ic: <span id="ic"></span></div>
-          <!-- <div> ir: <span id="ir"></span></div> -->
-          <div>op: <span id="op"></span></div>
-          <div>oi: <span id="oi"></span></div>
-        </div>
+      <div class="register box">
+        <div>ac: <span id="ac"></span></div>
+        <div>ra: <span id="ra"></span></div>
+        <div>ic: <span id="ic"></span></div>
+        <!-- <div> ir: <span id="ir"></span></div> -->
+        <div>op: <span id="op"></span></div>
+        <div>oi: <span id="oi"></span></div>
+      </div>
+    </div>
+    <div>
+      <div id="side-bar" class="slide-in">
+        <ul>
+
+
+
+          <li>
+            <button>Toggle Program</button>
+            <div class="toggle on">
+              <div onclick="toggleMnemonic(event)"></div>
+            </div>
+          </li>
+          <li><button onclick="toggleAssembly()">Toggle Assembly</button></li>
+          <li><button onclick="toggleRam()">Toggle RAM</button></li>
+          <li><button onclick="toggleVariables()">Toggle Variables</button></li>
+          <li><button onclick="toggleTerminal()">Toggle Terminal</button></li>
+          <li><button onclick="toggleEditor()">Toggle Editor</button></li>
+        </ul>
       </div>
       <textarea id="codeEditor" spellcheck="false">
 //par ou impar
@@ -110,12 +115,14 @@ res:
 
       </textarea>
     </div>
-    <script type="text/javascript" src="./js/setup.js"></script>
-    <script type="text/javascript" src="./js/compiler.js"></script>
-    <script type="text/javascript" src="./js/instructions.js"></script>
-    <script type="text/javascript" src="./js/userInteractions.js"></script>
-    <script type="text/javascript" src="./js/typewriter.js"></script>
-  </body>
+  </div>
+  <script type="text/javascript" src="./js/setup.js"></script>
+  <script type="text/javascript" src="./js/compiler.js"></script>
+  <script type="text/javascript" src="./js/instructions.js"></script>
+  <script type="text/javascript" src="./js/userInteractions.js"></script>
+  <script type="text/javascript" src="./js/typewriter.js"></script>
+</body>
+
 </html>
 
 <!-- lv 0x0006

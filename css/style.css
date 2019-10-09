@@ -14,14 +14,10 @@ body {
   margin: 0;
 }
 
-nav {
-  text-align: center;
-}
-
 #codeEditor {
   position: relative;
   width: 500px;
-  height: 98vh;
+  height: calc(100vh - 30px);
   min-height: 400px;
 }
 
@@ -29,6 +25,10 @@ nav {
   font-family: "Cutive Mono", monospace;
   font-size: 14px;
   color: #fff;
+}
+
+#side-bar {
+  transition: all 1s ease;
 }
 
 #terminal-input {
@@ -66,8 +66,8 @@ nav {
 }
 
 .info {
-  height: 49vh;
-  min-width: 124px;
+  height: calc(50vh - 15px);
+  min-width: 132px;
   background-color: #282a37;
   overflow: scroll;
   color: #fff;
@@ -85,6 +85,22 @@ nav {
   color: #12a2d4;
 }
 
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  position: fixed;
+  z-index: 100;
+  background: rgb(54, 60, 76);
+  width: 100vw;
+  margin: -30px 0 0 0;
+}
+
+.nav-bar > button {
+  position: fixed;
+  right: 0;
+}
+
 .register {
   background-color: #add8e6;
   width: 124px;
@@ -99,6 +115,24 @@ nav {
   width: 30%;
 }
 
+.slide-in {
+  position: fixed;
+  right: 0;
+  z-index: 100;
+  height: calc(100vh - 30px);
+  width: 20vw;
+  min-width: 164px;
+  background: rgba(54, 60, 76, 0.7);
+}
+
+.slide-out {
+  right: -20vw;
+  width: 0;
+  min-width: 0;
+  height: 0;
+  border-radius: 300px 0 300px 300px;
+}
+
 .var {
   color: #45fc74;
 }
@@ -106,6 +140,7 @@ nav {
 .wrapper {
   display: flex;
   justify-content: space-between;
+  margin: 30px 0 0 0;
 }
 
 @media (max-width: 600px) {

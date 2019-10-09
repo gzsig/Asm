@@ -18,9 +18,10 @@ function handelProgramMnemonic() {
       addr.setAttribute("class", "hex-num");
       addr.innerHTML = `0x${format16(i)}`;
       value.innerHTML = `: ${program[i].str}`;
-      value.setAttribute("style", "font-size: 10px");
+      // value.setAttribute("style", "font-size: 10px");
       line.appendChild(addr);
       line.appendChild(value);
+      line.setAttribute("style", "font-size: 12px");;
       ram.appendChild(line);
     }
   }
@@ -39,6 +40,7 @@ function handelProgramAssembly() {
       value.innerHTML = `: ${program[i].hex}`;
       line.appendChild(addr);
       line.appendChild(value);
+      line.setAttribute("style", "font-size: 12px");;
       ram.appendChild(line);
     }
   }
@@ -57,6 +59,7 @@ function handelRam() {
       value.innerHTML = `: ${format16(memory[i])}`;
       line.appendChild(addr);
       line.appendChild(value);
+      line.setAttribute("style", "font-size: 12px");;
       ram.appendChild(line);
     }
   }
@@ -80,6 +83,7 @@ function handelLabels() {
     line.appendChild(name);
     line.appendChild(varToken);
     line.appendChild(addr);
+    line.setAttribute("style", "font-size: 12px");;
     variables.appendChild(line);
   }
 }
@@ -208,8 +212,9 @@ function toggleVariables() {
 function toggleTerminal() {
   document.getElementById("terminal-wrapper").classList.toggle("hide-element");
 }
-function toggleMnemonic() {
+function toggleMnemonic(e) {
   document.getElementById("mnemonic").classList.toggle("hide-element");
+  e.target.parentNode.classList.toggle("on")
 }
 function toggleAssembly() {
   document.getElementById("assembly").classList.toggle("hide-element");
@@ -218,6 +223,11 @@ function toggleAssembly() {
 function targetTerm() {
   let termInput = document.getElementById("terminal-input");
   termInput.focus();
+}
+
+function toggleSidebar(){
+  document.querySelector("#side-bar").classList.toggle("slide-out")
+  // document.querySelector("#side-bar").classList.toggle("slide-in")
 }
 
 function welcome() {
