@@ -212,9 +212,9 @@ function toggleVariables() {
 function toggleTerminal() {
   document.getElementById("terminal-wrapper").classList.toggle("hide-element");
 }
-function toggleMnemonic(e) {
+function toggleMnemonic() {
   document.getElementById("mnemonic").classList.toggle("hide-element");
-  e.target.parentNode.classList.toggle("on")
+  // e.target.parentNode.classList.toggle("on")
 }
 function toggleAssembly() {
   document.getElementById("assembly").classList.toggle("hide-element");

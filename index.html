@@ -76,14 +76,12 @@
       <div id="side-bar" class="slide-in">
         <ul>
 
+          <div class="toggle toggle--daynight">
+            <input type="checkbox" id="toggle--daynight" class="toggle--checkbox">
+            <label class="toggle--btn" for="toggle--daynight"><span class="toggle--feature"></span></label>
+          </div>
 
-
-          <li>
-            <button>Toggle Program</button>
-            <div class="toggle on">
-              <div onclick="toggleMnemonic(event)"></div>
-            </div>
-          </li>
+          <li><button onclick="toggleMnemonic()">Toggle Program</button></li>
           <li><button onclick="toggleAssembly()">Toggle Assembly</button></li>
           <li><button onclick="toggleRam()">Toggle RAM</button></li>
           <li><button onclick="toggleVariables()">Toggle Variables</button></li>
