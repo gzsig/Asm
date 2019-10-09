@@ -73,21 +73,60 @@
       </div>
     </div>
     <div>
-      <div id="side-bar" class="slide-in">
-        <ul>
+      <div id="side-bar" class="slide-in slide-out">
 
-          <div class="toggle toggle--daynight">
-            <input type="checkbox" id="toggle--daynight" class="toggle--checkbox">
-            <label class="toggle--btn" for="toggle--daynight"><span class="toggle--feature"></span></label>
-          </div>
+        <div class="side-bar-item">
+          <div>Toggle Program</div>
+          <label class="switch">
+            <input type="checkbox" onclick="toggleMnemonic()" checked>
+            <span></span>
+          </label>
+        </div>
+        <div class="side-bar-item">
+          <div>Toggle Assembly</div>
 
-          <li><button onclick="toggleMnemonic()">Toggle Program</button></li>
-          <li><button onclick="toggleAssembly()">Toggle Assembly</button></li>
-          <li><button onclick="toggleRam()">Toggle RAM</button></li>
-          <li><button onclick="toggleVariables()">Toggle Variables</button></li>
-          <li><button onclick="toggleTerminal()">Toggle Terminal</button></li>
-          <li><button onclick="toggleEditor()">Toggle Editor</button></li>
-        </ul>
+          <label class="switch">
+            <input type="checkbox" onclick="toggleAssembly()" checked>
+            <span></span>
+          </label>
+
+        </div>
+        <div class="side-bar-item">
+          <div>Toggle RAM</div>
+
+          <label class="switch">
+            <input type="checkbox" onclick="toggleRam()" checked>
+            <span></span>
+          </label>
+
+        </div>
+        <div class="side-bar-item">
+          <div>Toggle Variables</div>
+
+          <label class="switch">
+            <input type="checkbox" onclick="toggleVariables()" checked>
+            <span></span>
+          </label>
+
+        </div>
+        <div class="side-bar-item">
+          <div>Toggle Terminal</div>
+
+          <label class="switch">
+            <input type="checkbox" onclick="toggleTerminal()" checked>
+            <span></span>
+          </label>
+
+        </div>
+        <div class="side-bar-item">
+          <div>Toggle Editor</div>
+
+          <label class="switch">
+            <input type="checkbox" onclick="toggleEditor()" checked>
+            <span></span>
+          </label>
+
+        </div>
       </div>
       <textarea id="codeEditor" spellcheck="false">
 //par ou impar
