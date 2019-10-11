@@ -22,11 +22,7 @@
 <body>
   <div class="nav-bar">
     Asm 24bits
-    <button class="figure" onclick="toggleSidebar()">
-      <div>
-        <bla>WINDOWS</bla>
-      </div>
-    </button>
+    <button onclick="toggleSidebar()">WINDOWS</button>
   </div>
 
   <div class="wrapper">
@@ -49,7 +45,7 @@
       </div>
     </div>
     <div class="resgister-and-btns">
-      <div id="comunication"></div>
+      <div id="comunication" style="text-align: justify; padding: 5px;;"></div>
       <div id="terminal-wrapper" onclick="targetTerm()">
         <div id="term-his"></div>
         <span>
@@ -63,6 +59,8 @@
         <button onclick="step()">step</button>
         <button onclick="execute()">execute</button>
       </div> -->
+      <button onclick="playGame()">Game</button>
+      <button onclick="validateParImpar()">Attempt</button>
       <div class="register box">
         <div>ac: <span id="ac"></span></div>
         <div>ra: <span id="ra"></span></div>
@@ -129,28 +127,47 @@
         </div>
       </div>
       <textarea id="codeEditor" spellcheck="false">
-//par ou impar
-
-in
-stor mynum
-div 0x0002
-mul 0x0002
-stor res
-load mynum
-subm res
-jz par
-lv 0x000
-end
-
-par:
-lv 0x0001
-end
-
-
-mynum:
-res:
-
+          //par ou impar
+      
+          lv 0x0005
+          stor mynum
+          div 0x0002
+          mul 0x0002
+          stor res
+          load mynum
+          subm res
+          jz par
+          lv 0x0001
+          end
+          
+          par:
+          lv 0x0000
+          end
+          
+          
+          mynum:
+          res: 
       </textarea>
+      <!-- //par ou impar
+      
+      lv 0x0005
+      stor mynum
+      div 0x0002
+      mul 0x0002
+      stor res
+      load mynum
+      subm res
+      jz par
+      lv 0x0001
+      end
+      
+      par:
+      lv 0x0000
+      end
+      
+      
+      mynum:
+      res: -->
     </div>
   </div>
   <script type="text/javascript" src="./js/setup.js"></script>
@@ -158,6 +175,7 @@ res:
   <script type="text/javascript" src="./js/instructions.js"></script>
   <script type="text/javascript" src="./js/userInteractions.js"></script>
   <script type="text/javascript" src="./js/typewriter.js"></script>
+  <script type="text/javascript" src="./js/validate.js"></script>
 </body>
 
 </html>

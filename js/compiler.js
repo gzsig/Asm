@@ -167,6 +167,8 @@ function step() {
 }
 
 function execute() {
-  while (!registers.end) step();
-  renderRegister();
+    while (!registers.end){
+      step();
+    } 
+    renderRegister();
 }

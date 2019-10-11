@@ -230,6 +230,10 @@ function toggleSidebar(){
   // document.querySelector("#side-bar").classList.toggle("slide-in")
 }
 
+function playGame() {
+  typeWriter("Write a program that receives a user input via the 'LV' command and at the end of the execution if the inputed number is even, load 0000 to the accumulator, otherwise load 0001")
+}
+
 function welcome() {
   let msg =
     "Welcome to ASM. Glad your here. For a full documentation check out the ";

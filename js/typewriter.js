@@ -9,7 +9,7 @@ function typeWriter(txt, f) {
       i++;
     } else {
       clearInterval(typingId)
-      f()
+      if(f) f()
     }
   }, speed);
 }
