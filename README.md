@@ -1,6 +1,6 @@
 # Asm
 
-## Documentation
+## The MAN (manual)
 ---
 ### Terminal
 * MyTerm saves your history so with the up and down key it navigates through recent commands.
