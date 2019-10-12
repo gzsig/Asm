@@ -1,6 +1,9 @@
 # Asm
 
 ## The MAN (manual)
+
+#### This guide is designed to help you immediately be productive with ASM, and understand how all of the pieces fit together.
+
 ---
 ### Terminal
 * MyTerm saves your history so with the up and down key it navigates through recent commands.
