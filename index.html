@@ -21,8 +21,10 @@
 
 <body>
   <div class="nav-bar">
-    Asm 24bits
-    <button onclick="toggleSidebar()">WINDOWS</button>
+    <h2 style="color: #8BE9FD;">
+      ASM 24bits
+    </h2>
+    <button onclick="toggleSidebar()">SETTINGS</button>
   </div>
 
   <div class="wrapper">
@@ -59,8 +61,10 @@
         <button onclick="step()">step</button>
         <button onclick="execute()">execute</button>
       </div> -->
-      <button onclick="playGame()">Game</button>
-      <button onclick="validateParImpar()">Attempt</button>
+      <div>
+        <button onclick="playGame()">Game</button>
+        <button onclick="validateParImpar()">Attempt</button>
+      </div>
       <div class="register box">
         <div>ac: <span id="ac"></span></div>
         <div>ra: <span id="ra"></span></div>
@@ -127,26 +131,26 @@
         </div>
       </div>
       <textarea id="codeEditor" spellcheck="false">
-          //par ou impar
-      
-          lv 0x0005
-          stor mynum
-          div 0x0002
-          mul 0x0002
-          stor res
-          load mynum
-          subm res
-          jz par
-          lv 0x0001
-          end
-          
-          par:
-          lv 0x0000
-          end
-          
-          
-          mynum:
-          res: 
+//par ou impar
+
+lv 0x0005
+stor mynum
+div 0x0002
+mul 0x0002
+stor res
+load mynum
+subm res
+jz par
+lv 0x0001
+end
+
+par:
+lv 0x0000
+end
+
+
+mynum:
+res: 
       </textarea>
       <!-- //par ou impar
       
