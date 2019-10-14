@@ -1,5 +1,5 @@
-var instructionCount = 0;
-var instructions = {
+let instructionCount = 0;
+let instructions = {
   nop: {
     hex: format8(instructionCount++),
     argCount: 0,
@@ -15,8 +15,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var dest = arg & 0xfff;
-      var fmt = format16(dest);
+      let dest = arg & 0xfff;
+      let fmt = format16(dest);
       registers.ra = registers.ic;
       registers.ic = dest;
       registers.ir = `1${fmt}`;
@@ -28,8 +28,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var dest = arg & 0xfff;
-      var fmt = format16(dest);
+      let dest = arg & 0xfff;
+      let fmt = format16(dest);
       registers.ra = registers.ic;
       if (!registers.ac) registers.ic = dest;
       else registers.ic++;
@@ -42,8 +42,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var dest = arg & 0xfff;
-      var fmt = format16(dest);
+      let dest = arg & 0xfff;
+      let fmt = format16(dest);
       registers.ra = registers.ic;
       if (registers.ac) registers.ic = dest;
       else registers.ic++;
@@ -56,7 +56,7 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var fmt = format16(arg);
+      let fmt = format16(arg);
       registers.ac = arg;
       registers.ra = registers.ic;
       registers.ic++;
@@ -69,7 +69,7 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var fmt = format16(arg);
+      let fmt = format16(arg);
       registers.ac = (registers.ac + arg) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -82,8 +82,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var src = arg & 0xfff;
-      var fmt = format16(arg);
+      let src = arg & 0xfff;
+      let fmt = format16(arg);
       registers.ac = (registers.ac + memory[src]) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -96,7 +96,7 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var fmt = format16(arg);
+      let fmt = format16(arg);
       registers.ac = (registers.ac - arg) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -109,8 +109,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var src = arg & 0xfff;
-      var fmt = format16(arg);
+      let src = arg & 0xfff;
+      let fmt = format16(arg);
       registers.ac = (registers.ac - memory[src]) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -123,7 +123,7 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var fmt = format16(arg);
+      let fmt = format16(arg);
       registers.ac = (registers.ac * arg) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -136,8 +136,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var src = arg & 0xfff;
-      var fmt = format16(arg);
+      let src = arg & 0xfff;
+      let fmt = format16(arg);
       registers.ac = (registers.ac * memory[src]) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -150,7 +150,7 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var fmt = format16(arg);
+      let fmt = format16(arg);
       registers.ac = (registers.ac / arg) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -163,8 +163,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var src = arg & 0xfff;
-      var fmt = format16(arg);
+      let src = arg & 0xfff;
+      let fmt = format16(arg);
       registers.ac = (registers.ac / memory[src]) & 0xffff;
       registers.ra = registers.ic;
       registers.ic++;
@@ -177,8 +177,8 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var src = arg & 0xfff;
-      var fmt = format16(arg);
+      let src = arg & 0xfff;
+      let fmt = format16(arg);
       registers.ac = memory[src];
       registers.ra = registers.ic;
       registers.ic++;
@@ -191,7 +191,7 @@ var instructions = {
     hex: format8(instructionCount++),
     argCount: 1,
     f: function(arg) {
-      var dest = arg & 0xfff;
+      let dest = arg & 0xfff;
       if (dest < program.length && !program[dest].isLabel) {
         let terminalHistory = document.getElementById("term-his");
         terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #f00"> Não é permitido sobrescrever a instrução no endereço ${arg.toString(
@@ -199,7 +199,7 @@ var instructions = {
         )} </span> <br>`;
         terminal.value = "";
       }
-      var fmt = format16(dest);
+      let fmt = format16(dest);
       memory[dest] = registers.ac;
       registers.ra = registers.ic;
       registers.ic++;
@@ -219,8 +219,8 @@ var instructions = {
 
         // throw "Stack overflow";
       }
-      var dest = arg & 0xfff;
-      var fmt = format16(dest);
+      let dest = arg & 0xfff;
+      let fmt = format16(dest);
       registers.ra = registers.ic;
       registers.ic = dest;
       registers.ir = `B${fmt}`;

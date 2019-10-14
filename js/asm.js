@@ -1,10 +1,10 @@
 CodeMirror.defineMode("asm86", function ()
 {
-	var keywords1 = /^(lv|load|stor|add|sub|div|mul|addm|subm|mulm|divm|nop)\b/i;
-	var keywords2 = /^(end|sc|rc|jmp|jnz|jz|in|out)\b/i;
-	var keywords3 = /^(e?[abcd]x|[abcd][lh]|e?(si|di|bp|sp)|eip)\b/i;
-	var keywords4 = /^(d?word|byte|ptr)\b/i;
-	var numbers = /^(0x[0-9a-f]+)\b/i;
+	let keywords1 = /^(lv|load|stor|add|sub|div|mul|addm|subm|mulm|divm|nop)\b/i;
+	let keywords2 = /^(end|sc|rc|jmp|jnz|jz|in|out)\b/i;
+	let keywords3 = /^(e?[abcd]x|[abcd][lh]|e?(si|di|bp|sp)|eip)\b/i;
+	let keywords4 = /^(d?word|byte|ptr)\b/i;
+	let numbers = /^(0x[0-9a-f]+)\b/i;
 	return {
 		startState: function () {
 			return { context: 0 };
@@ -14,7 +14,7 @@ CodeMirror.defineMode("asm86", function ()
 			//	state.context = 0;
 			if (stream.eatSpace())
 				return null;
-			var w;
+			let w;
 			if (stream.eatWhile(/\w/)) {
 				w = stream.current();
 				if (keywords1.test(w)) {

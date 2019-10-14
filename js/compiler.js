@@ -2,11 +2,11 @@
 
 //editor_GetValue()
 
-var program = [],
+let program = [],
   memory = new Array(4096),
   labels = {};
 
-var registers = {
+let registers = {
   ac: 0,
   ic: 0,
   ra: 0,
@@ -29,41 +29,41 @@ var registers = {
 };
 
 function format16(x) {
-  var s = "000" + x.toString(16).toUpperCase();
+  let s = "000" + x.toString(16).toUpperCase();
   return s.substr(s.length - 4);
 }
 
 function format8(x) {
-  var s = "0" + x.toString(16).toUpperCase();
+  let s = "0" + x.toString(16).toUpperCase();
   return s.substr(s.length - 2);
 }
 
 function compile() {
   program = [];
   labels = {};
-  for (var i = 0; i < memory.length; i++) memory[i] = 0;
+  for (let i = 0; i < memory.length; i++) memory[i] = 0;
   registers.init();
 
-  var regTab = /\t/g;
-  var lines = editor_GetValue().split("\n");
+  let regTab = /\t/g;
+  let lines = editor_GetValue().split("\n");
 
-  for (var i = 0; i < lines.length; i++) {
-    var line = lines[i];
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
 
-    var comment = line.indexOf("/");
+    let comment = line.indexOf("/");
     if (comment >= 0) line = line.substr(0, comment);
     line = line.trim().toLowerCase();
 
     if (!line) continue;
 
-    var tokens = line.replace(regTab, " ").split(" ");
-    var opcode = tokens[0];
+    let tokens = line.replace(regTab, " ").split(" ");
+    let opcode = tokens[0];
 
-    for (var t = tokens.length - 1; t >= 0; t--) {
+    for (let t = tokens.length - 1; t >= 0; t--) {
       if (!tokens[t]) tokens.splice(t, 1);
     }
 
-    var instruction = instructions[opcode],
+    let instruction = instructions[opcode],
       isLabel = false;
     if (!instruction) {
       if (opcode.endsWith(":")) {
@@ -94,7 +94,7 @@ function compile() {
       );
     }
 
-    var arg = 0,
+    let arg = 0,
       argNumber = true;
     if (tokens.length > 1) {
       if (tokens[1].substr(0, 2) == "0x") {
@@ -134,8 +134,8 @@ function compile() {
     });
   }
 
-  for (var i = 0; i < program.length; i++) {
-    var p = program[i];
+  for (let i = 0; i < program.length; i++) {
+    let p = program[i];
     if (p.argNumber) continue;
     if (!(p.arg in labels))
       return "label " + p.arg + " nao definido na linha " + p.line;
@@ -160,7 +160,7 @@ function step() {
     alert("endereco invalido!");
     return;
   }
-  var p = program[registers.ic];
+  let p = program[registers.ic];
   p.instruction.f(p.arg);
   renderRegister();
   handelRam();
