@@ -162,16 +162,17 @@ function shouldAutocomplete(abrv, extended) {
   return res;
 }
 
-function terminalComands() {
+function terminalComands(command = null) {
   let terminal = document.getElementById("terminal-input");
-  historyArr.push(terminal.value);
+  let nextCommand = command ? command : terminal.value;
+  historyArr.push(nextCommand);
   historyIndex = historyArr.length;
-  switch (terminal.value) {
+  switch (nextCommand) {
     case "":
       break;
     case "compile()":
       if (compile() == null) {
-        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
+        terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #21ba45"> ${nextCommand} </span> <br>`;
         terminal.value = "";
         setTimeout(() => {
           compile();
@@ -182,19 +183,19 @@ function terminalComands() {
       }
       break;
     case "step()":
-      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #21ba45"> ${nextCommand} </span> <br>`;
       terminal.value = "";
       step();
       break;
     case "execute()":
-      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #45fc74"> ${terminal.value} </span> <br>`;
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #21ba45"> ${nextCommand} </span> <br>`;
       terminal.value = "";
       setTimeout(() => {
         execute();
       }, 50);
       break;
     default:
-      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> ${terminal.value}<br>myTerm: command not found: ${terminal.value} <br>`;
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> ${nextCommand}<br>myTerm: command not found: ${nextCommand} <br>`;
       terminal.value = "";
       break;
   }
