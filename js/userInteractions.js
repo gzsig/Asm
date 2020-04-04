@@ -227,12 +227,7 @@ function targetTerm() {
 }
 
 function toggleSidebar(){
-  document.querySelector("#side-bar").classList.toggle("slide-out")
-  // document.querySelector("#side-bar").classList.toggle("slide-in")
-}
-
-function playGame() {
-  typeWriter("Write a program that receives a user input via the 'LV' command and at the end of the execution if the inputed number is even, load 0000 to the accumulator, otherwise load 0001")
+  document.querySelector("#setting-modal").classList.toggle("fade-out")
 }
 
 function welcome() {
@@ -245,7 +240,7 @@ function welcome() {
       "https://github.com/gzsig/Asm/blob/master/README.md"
     );
     docLink.setAttribute("target", "_blank");
-    docLink.setAttribute("style", "color: #45FC74; text-decoration: none");
+    docLink.setAttribute("style", "color: #00d4ff; text-decoration: none; font-weight:bold");
     let com = document.getElementById("comunication");
     docLink.innerHTML = "DOCS";
     com.appendChild(docLink);
