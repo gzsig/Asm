@@ -1,133 +1,177 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head data-nores="1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head data-nores="1">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assembly Emulator</title>
 
-  <title>Assembly Emulator</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/codemirror.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/button.css" />
 
-  <link rel="stylesheet" href="./css/codemirror.css" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/button.css">
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="./js/codemirror.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="./js/active-line.js"
+    ></script>
+    <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
+  </head>
 
-  <script type="text/javascript" charset="utf-8" src="./js/codemirror.js"></script>
-  <script type="text/javascript" charset="utf-8" src="./js/active-line.js"></script>
-  <script type="text/javascript" charset="utf-8" src="./js/asm.js"></script>
-</head>
-
-<body>
-  <div class="nav-bar">
-    <h2 style="color: #8BE9FD;">
-      ASM 24bits
-    </h2>
-    <button onclick="toggleSidebar()">SETTINGS</button>
-  </div>
-
-  <div class="wrapper">
-    <div>
-      <div class="info-container">
-        <div id="mnemonic" class="info">
-          <p>PROGRAM</p>
-        </div>
-        <div id="assembly" class="info">
-          <p>ASSEMBLY</p>
-        </div>
-      </div>
-      <div class="info-container">
-        <div id="ram" class="info">
-          <p>VALUES</p>
-        </div>
-        <div id="variables" class="info">
-          <p>VARIABLES</p>
-        </div>
-      </div>
+  <body>
+    <div class="nav-bar">
+      <h2>
+        ASM 24bits
+      </h2>
+      <button onclick="toggleSidebar()">SETTINGS</button>
     </div>
-    <div class="resgister-and-btns">
-      <div id="comunication" style="text-align: justify; padding: 5px;;"></div>
-      <div id="terminal-wrapper" onclick="targetTerm()">
-        <div id="term-his"></div>
-        <span>
-          <span style="color: green">➜</span>
-          <span style="color: #55BAD0 "> root </span>
-          <input type="text" id="terminal-input" autofocus onkeypress="isEnter(event)"
-            onkeydown="handleOnkeydown(event)" autocomplete="off" /></span>
-      </div>
-      <!-- <div>
-        <button onclick="compile()">compile</button>
-        <button onclick="step()">step</button>
-        <button onclick="execute()">execute</button>
-      </div> -->
+
+    <div class="wrapper">
       <div>
-        <button onclick="playGame()">Game</button>
-        <button onclick="validateParImpar()">Attempt</button>
+        <div class="info-container">
+          <div id="mnemonic" class="info">
+            <p>PROGRAM</p>
+          </div>
+          <div id="assembly" class="info">
+            <p>ASSEMBLY</p>
+          </div>
+          <!-- </div>
+        <div class="info-container"> -->
+          <div id="ram" class="info">
+            <p>VALUES</p>
+          </div>
+          <div id="variables" class="info">
+            <p>VARIABLES</p>
+          </div>
+        </div>
       </div>
-      <div class="register box">
-        <div>ac: <span id="ac"></span></div>
-        <div>ra: <span id="ra"></span></div>
-        <div>ic: <span id="ic"></span></div>
-        <!-- <div> ir: <span id="ir"></span></div> -->
-        <div>op: <span id="op"></span></div>
-        <div>oi: <span id="oi"></span></div>
+      <div class="resgister-and-btns">
+        <div
+          id="comunication"
+          style="text-align: justify; padding: 5px;;"
+        ></div>
+        <div id="terminal-wrapper" onclick="targetTerm()">
+          <div id="term-his"></div>
+          <span>
+            <span style="color: green">➜</span>
+            <span style="color: #55BAD0 "> root </span>
+            <input
+              type="text"
+              id="terminal-input"
+              autofocus
+              onkeypress="isEnter(event)"
+              onkeydown="handleOnkeydown(event)"
+              autocomplete="off"
+          /></span>
+        </div>
+        <div>
+          <button onclick="terminalComands('compile()')">compile</button>
+          <button onclick="terminalComands('step()')">step</button>
+          <button onclick="terminalComands('execute()')">execute</button>
+        </div>
+        <div class="register box">
+          <div>ac: <span id="ac"></span></div>
+          <div>ra: <span id="ra"></span></div>
+          <div>ic: <span id="ic"></span></div>
+          <!-- <div> ir: <span id="ir"></span></div> -->
+          <div>op: <span id="op"></span></div>
+          <div>oi: <span id="oi"></span></div>
+        </div>
       </div>
-    </div>
-    <div>
+      <div>
         <div id="setting-modal" class="fade-in fade-out">
           <div class="card">
             <div class="setting-modal-item">
-          <div>Toggle Program</div>
-          <label class="switch">
+              <div>Toggle Program</div>
+              <label class="switch">
                 <input type="checkbox" onclick="toggleMnemonic()" checked />
-            <span></span>
-          </label>
-        </div>
-            <div class="setting-modal-item">
-          <div>Toggle Assembly</div>
-
-          <label class="switch">
-                <input type="checkbox" onclick="toggleAssembly()" checked />
-            <span></span>
-          </label>
-        </div>
-            <div class="setting-modal-item">
-          <div>Toggle RAM</div>
-
-          <label class="switch">
-                <input type="checkbox" onclick="toggleRam()" checked />
-            <span></span>
-          </label>
-        </div>
-            <div class="setting-modal-item">
-          <div>Toggle Variables</div>
-
-          <label class="switch">
-                <input type="checkbox" onclick="toggleVariables()" checked />
-            <span></span>
-          </label>
-        </div>
-            <div class="setting-modal-item">
-          <div>Toggle Terminal</div>
-
-          <label class="switch">
-                <input type="checkbox" onclick="toggleTerminal()" checked />
-            <span></span>
-          </label>
-        </div>
-            <div class="setting-modal-item">
-          <div>Toggle Editor</div>
-
-          <label class="switch">
-                <input type="checkbox" onclick="toggleEditor()" checked />
-            <span></span>
-          </label>
+                <span></span>
+              </label>
             </div>
+            <div class="setting-modal-item">
+              <div>Toggle Assembly</div>
+
+              <label class="switch">
+                <input type="checkbox" onclick="toggleAssembly()" checked />
+                <span></span>
+              </label>
+            </div>
+            <div class="setting-modal-item">
+              <div>Toggle RAM</div>
+
+              <label class="switch">
+                <input type="checkbox" onclick="toggleRam()" checked />
+                <span></span>
+              </label>
+            </div>
+            <div class="setting-modal-item">
+              <div>Toggle Variables</div>
+
+              <label class="switch">
+                <input type="checkbox" onclick="toggleVariables()" checked />
+                <span></span>
+              </label>
+            </div>
+            <div class="setting-modal-item">
+              <div>Toggle Terminal</div>
+
+              <label class="switch">
+                <input type="checkbox" onclick="toggleTerminal()" checked />
+                <span></span>
+              </label>
+            </div>
+            <div class="setting-modal-item">
+              <div>Toggle Editor</div>
+
+              <label class="switch">
+                <input type="checkbox" onclick="toggleEditor()" checked />
+                <span></span>
+              </label>
+            </div>
+          </div>
         </div>
+        <textarea id="codeEditor" spellcheck="false">
+// code here
+      </textarea
+        >
       </div>
-      <textarea id="codeEditor" spellcheck="false">
-//par ou impar
+    </div>
+    <script type="text/javascript" src="./js/setup.js"></script>
+    <script type="text/javascript" src="./js/compiler.js"></script>
+    <script type="text/javascript" src="./js/instructions.js"></script>
+    <script type="text/javascript" src="./js/userInteractions.js"></script>
+    <script type="text/javascript" src="./js/typewriter.js"></script>
+    <script type="text/javascript" src="./js/validate.js"></script>
+  </body>
+</html>
+
+<!-- lv 0x0006
+stor myvar
+lv 0x0000
+sc myfunc
+out
+end
+
+
+myfunc:
+load myvar
+div 0x0002
+rc
+
+myvar: -->
+
+<!-- //par ou impar
 
 lv 0x0005
 stor mynum
@@ -146,51 +190,4 @@ end
 
 
 mynum:
-res: 
-      </textarea>
-      <!-- //par ou impar
-      
-      lv 0x0005
-      stor mynum
-      div 0x0002
-      mul 0x0002
-      stor res
-      load mynum
-      subm res
-      jz par
-      lv 0x0001
-      end
-      
-      par:
-      lv 0x0000
-      end
-      
-      
-      mynum:
-      res: -->
-    </div>
-  </div>
-  <script type="text/javascript" src="./js/setup.js"></script>
-  <script type="text/javascript" src="./js/compiler.js"></script>
-  <script type="text/javascript" src="./js/instructions.js"></script>
-  <script type="text/javascript" src="./js/userInteractions.js"></script>
-  <script type="text/javascript" src="./js/typewriter.js"></script>
-  <script type="text/javascript" src="./js/validate.js"></script>
-</body>
-
-</html>
-
-<!-- lv 0x0006
-stor myvar
-lv 0x0000
-sc myfunc
-out
-end
-
-
-myfunc:
-load myvar
-div 0x0002
-rc
-
-myvar: -->
+res:  -->
