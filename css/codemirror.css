@@ -6,8 +6,8 @@
   /* border: 1px solid #ddd; */
   width: auto;
   height: auto;
-  background-color: #282A37;
-  color: #45FC74;
+  background-color: #fff;
+  color: #a90073;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
@@ -88,17 +88,17 @@
 
 /* DEFAULT THEME */
 
-.cm-s-default .cm-keyword {color: #55BAD0;}
-.cm-s-default .cm-keyword-2 {color: #FE71B5;}
-.cm-s-default .cm-keyword-3 {color: #12a2d4;}
+.cm-s-default .cm-keyword {color: #9223be;}
+.cm-s-default .cm-keyword-2 {color: #cc494f;}
+.cm-s-default .cm-keyword-3 {color: #00888b;}
 .cm-s-default .cm-atom {color: #00f;}
-.cm-s-default .cm-number {color: #12a2d4;}
+.cm-s-default .cm-number {color: #00888b;}
 .cm-s-default .cm-property {color: #000;}
 .cm-s-default .cm-operator {color: #f00;font-weight:bold;}
 .cm-s-default .cm-classes {color: #2b91af;}
 .cm-s-default .cm-string {color: #f0f;}
 .cm-s-default .cm-string-2 {color: #f0f;}
-.cm-s-default .cm-comment {color: #009900;}
+.cm-s-default .cm-comment {color: #c7c7c7;}
 .cm-s-default .cm-meta {color: #555;}
 .cm-s-default .cm-error {color: #f00;}
 .cm-s-default .cm-qualifier {color: #555;}
@@ -177,7 +177,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-gutter {
   height: 100%;
   display: inline-block;
-  background-color: rgb(31, 33, 46);
+  background-color: #fff;
   /* Hack to make IE7 behave */
   *zoom:1;
   *display:inline;
@@ -219,7 +219,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 }
 .CodeMirror-activeline-background {
 	/* border: 1px solid #aacfff; */
-	background: #3C4556 !important;
+	background: rgb(240, 240, 240) !important;
 }
 .CodeMirror-linewidget {
   position: relative;

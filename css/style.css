@@ -6,7 +6,7 @@ html {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: rgb(54, 60, 76);
+  background-color: #f0faff;
 }
 
 body {
@@ -20,23 +20,45 @@ body {
   height: calc(100vh - 30px);
   min-height: 400px;
   transition: opacity 0.2s ease-in-out;
+  margin: 0 0 0 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 #comunication {
   font-family: "Cutive Mono", monospace;
   font-size: 14px;
-  color: #fff;
+  color: #282a37;
 }
 
-#side-bar {
+#setting-modal {
   transition: all 1s ease;
+  position: fixed;
+  left: 0;
+  z-index: 100;
+  height: calc(100vh - 30px);
+  width: 100vw;
+  min-width: 164px;
+  background: rgba(54, 60, 76, 0.9);
+  padding: 0 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
+#setting-modal > .card {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 300px;
+  padding: 40px;
+  border-radius: 4px;
+}
 #terminal-input {
   width: calc(100% - 70px);
   border: 0;
-  background-color: #282a37;
-  color: #fff;
+  background-color: #fff;
+  color: #282a37;
 }
 
 #terminal-input:focus {
@@ -44,35 +66,44 @@ body {
 }
 
 #terminal-wrapper {
-  background-color: #282a37;
+  background-color: #fff;
   height: 200px;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 3px;
   border-radius: 3px;
-  color: #fff;
+  color: #282a37;
   font: normal 14px Consolas, "Lucida Console", "Lucida Sans Typewriter",
     monospace;
   transition: opacity 0.2s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 .box {
-  border: solid 1px #000;
+  border: solid 1px #282a37;
   border-radius: 5px;
   padding: 8px;
 }
 
 .info {
-  height: calc(50vh - 15px);
+  height: fit-content;
   min-width: 132px;
-  background-color: #282a37;
   overflow: scroll;
-  color: #fff;
+  color: #282a37;
   font: normal 14px Consolas, "Lucida Console", "Lucida Sans Typewriter",
     monospace;
   min-height: 200px;
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
+
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  width: 300px;
+  padding: 40px 40px;
+  margin: 40px 40px;
+  transition: box-shadow 0.1s ease-in-out;
 }
 
 .hide-element {
@@ -81,8 +112,8 @@ body {
 }
 
 .info-container {
-  display: flex;
-  justify-content: space-between;
+  height: calc(100vh - 30px);
+  overflow: auto;
 }
 
 .hex-num {
@@ -96,7 +127,7 @@ body {
   height: 30px;
   position: fixed;
   z-index: 100;
-  background: rgb(54, 60, 76);
+  background: #f0faff;
   width: 100vw;
   margin: -30px 0 0 0;
 }
@@ -104,6 +135,10 @@ body {
 .nav-bar > button {
   position: fixed;
   right: 0;
+}
+
+.nav-bar > h2 {
+  color: #8be9fd;
 }
 
 .register {
@@ -120,35 +155,25 @@ body {
   width: 30%;
 }
 
-.side-bar-item {
+.setting-modal-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 24px;
-  color: white;
+  color: #282a37;
 }
 
-.slide-in {
-  position: fixed;
-  right: 0;
-  z-index: 100;
-  height: calc(100vh - 30px);
-  width: 20vw;
-  min-width: 164px;
-  background: rgba(54, 60, 76, 0.7);
-  padding: 0 24px 0 0;
+.fade-in {
+  opacity: 1;
 }
 
-.slide-out {
-  right: -20vw;
-  width: 0;
-  min-width: 0;
-  height: 0;
-  border-radius: 300px 0 300px 300px;
+.fade-out {
+  opacity: 0;
+  z-index: -1 !important;
 }
 
 .var {
-  color: #45fc74;
+  color: #545454;
 }
 
 .wrapper {
@@ -159,9 +184,10 @@ body {
 
 @media (max-width: 600px) {
   #codeEditor {
-    position: relative;
-    width: 100vw;
+    /* position: relative; */
+    /* width: 100vw; */
     height: 60vh;
+    margin: auto;
     min-height: 400px;
   }
 
@@ -172,18 +198,15 @@ body {
 
   .info {
     height: auto;
-    width: 50%;
+    width: calc(100% - 80px);
     min-height: 0px;
-    max-height: 40vh;
   }
-
+  .info-container {
+    height: auto;
+  }
   .resgister-and-btns {
     width: 100vw;
     margin: 4px 0 0 0;
-  }
-
-  .slide-in {
-    background: rgba(54, 60, 76, 0.95);
   }
 
   .wrapper {
