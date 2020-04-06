@@ -1,16 +1,43 @@
 button {
-  background: #8BE9FD;
-  border: 0;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  align-items: flex-start;
+  background-color: buttonface;
   box-sizing: border-box;
-  margin: 5px;
-  padding: 3px 3px;
-  border-radius: 4px;
-  /* box-shadow: inset 0 0 0 2px #f45e61;
-  color: #f45e61; */
-  font-size: inherit;
-  font-weight: 700;
-  position: relative;
-  vertical-align: middle;
+  font: 400 14px system-ui;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-image: initial;
+  overflow: visible;
+  -webkit-appearance: button;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: 0;
+  border: none;
+  vertical-align: baseline;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  margin: 0 0.25em 0 0;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease, background 0.1s ease;
+  will-change: "";
+  -webkit-tap-highlight-color: transparent;
+  background: transparent none !important;
+  font-weight: 400;
+  border-radius: 0.28571429rem;
+  text-transform: none;
+  text-shadow: none !important;
+  box-shadow: 0 0 0 1px #21ba45 inset !important;
+  color: #21ba45 !important;
 }
 
 button:focus,
