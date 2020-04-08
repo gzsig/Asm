@@ -226,15 +226,18 @@ function toggleMnemonic() {
 function toggleAssembly() {
   document.getElementById("assembly").classList.toggle("hide-element");
 }
+function toggleExamples() {
+  document.querySelector("#examples").classList.toggle("fade-out");
+}
+function toggleSidebar() {
+  document.querySelector("#setting-modal").classList.toggle("fade-out");
+}
 
 function targetTerm() {
   let termInput = document.getElementById("terminal-input");
   termInput.focus();
 }
 
-function toggleSidebar() {
-  document.querySelector("#setting-modal").classList.toggle("fade-out");
-}
 
 function welcome() {
   let msg =
