@@ -46,26 +46,87 @@
           <div id="assembly" class="info">
             <p>ASSEMBLY</p>
           </div>
-          <!-- </div>
-        <div class="info-container"> -->
           <div id="ram" class="info">
             <p>VALUES</p>
           </div>
           <div id="variables" class="info">
             <p>VARIABLES</p>
           </div>
+          <div id="examples" class="info fade-out">
+            <p>EXAMPLES</p>
+            <p>//par ou impar in</p>
+            <p>in</p>
+            <p>stor mynum</p>
+            <p>div 0x0002</p>
+            <p>mul 0x0002</p>
+            <p>stor res</p>
+            <p>load mynum</p>
+            <p>subm res</p>
+            <p>jz par</p>
+            <p>lv 0x0001</p>
+            <p>end</p>
+            <p></p>
+            <p>par:</p>
+            <p>lv 0x0000</p>
+            <p>end</p>
+            <p></p>
+            <p></p>
+            <p>mynum:</p>
+            <p>res:</p>
+            <p>------------------</p>
+            <p></p>
+            <p>// usando função</p>
+            <p>in</p>
+            <p>stor valor1</p>
+            <p>in</p>
+            <p>stor valor2</p>
+            <p>sc divisao</p>
+            <p>out</p>
+            <p>end</p>
+            <p></p>
+            <p>valor1:</p>
+            <p>valor2:</p>
+            <p>res:</p>
+            <p></p>
+            <p>divisao:</p>
+            <p>load valor1</p>
+            <p>divm valor2</p>
+            <p>stor res</p>
+            <p>rc</p>
+            <p></p>
+            <p>------------------</p>
+            <p></p>
+            <p>// fatorial</p>
+            <p>in</p>
+            <p>stor o2c</p>
+            <p>stor o2e</p>
+            <p></p>
+            <p>loop:</p>
+            <p>sub 0x0001</p>
+            <p>jz fim</p>
+            <p>stor o2c</p>
+            <p>mulm o2e</p>
+            <p>stor o2e</p>
+            <p>load o2c</p>
+            <p>jnz loop</p>
+            <p></p>
+            <p></p>
+            <p>fim:</p>
+            <p>load o2e</p>
+            <p>end</p>
+            <p></p>
+            <p>o2c:</p>
+            <p>o2e:</p>
+          </div>
         </div>
       </div>
       <div class="resgister-and-btns">
-        <div
-          id="comunication"
-          style="text-align: justify; padding: 5px;;"
-        ></div>
+        <div id="comunication" style="text-align: justify; padding: 5px;"></div>
         <div id="terminal-wrapper" onclick="targetTerm()">
           <div id="term-his"></div>
           <span>
-            <span style="color: green">➜</span>
-            <span style="color: #55BAD0 "> root </span>
+            <span style="color: green;">➜</span>
+            <span style="color: #55bad0;"> root </span>
             <input
               type="text"
               id="terminal-input"
@@ -75,7 +136,7 @@
               autocomplete="off"
           /></span>
         </div>
-        <div>
+        <div class="btns">
           <button onclick="terminalComands('compile()')">compile</button>
           <button onclick="terminalComands('step()')">step</button>
           <button onclick="terminalComands('execute()')">execute</button>
@@ -101,7 +162,6 @@
             </div>
             <div class="setting-modal-item">
               <div>Toggle Assembly</div>
-
               <label class="switch">
                 <input type="checkbox" onclick="toggleAssembly()" checked />
                 <span></span>
@@ -109,7 +169,6 @@
             </div>
             <div class="setting-modal-item">
               <div>Toggle RAM</div>
-
               <label class="switch">
                 <input type="checkbox" onclick="toggleRam()" checked />
                 <span></span>
@@ -117,7 +176,6 @@
             </div>
             <div class="setting-modal-item">
               <div>Toggle Variables</div>
-
               <label class="switch">
                 <input type="checkbox" onclick="toggleVariables()" checked />
                 <span></span>
@@ -125,7 +183,6 @@
             </div>
             <div class="setting-modal-item">
               <div>Toggle Terminal</div>
-
               <label class="switch">
                 <input type="checkbox" onclick="toggleTerminal()" checked />
                 <span></span>
@@ -133,9 +190,15 @@
             </div>
             <div class="setting-modal-item">
               <div>Toggle Editor</div>
-
               <label class="switch">
                 <input type="checkbox" onclick="toggleEditor()" checked />
+                <span></span>
+              </label>
+            </div>
+            <div class="setting-modal-item">
+              <div>Toggle Examples</div>
+              <label class="switch">
+                <input type="checkbox" onclick="toggleExamples()" />
                 <span></span>
               </label>
             </div>
@@ -143,7 +206,7 @@
         </div>
         <textarea id="codeEditor" spellcheck="false">
 // code here
-      </textarea
+</textarea
         >
       </div>
     </div>

@@ -1,4 +1,3 @@
-Write a program that receives a user input via the 'LV' command and at the end of the execution if the inputed number is even, load 0000 to the accumulator, otherwise load 0001
 
 //par ou impar
 in
@@ -21,7 +20,7 @@ mynum:
 res:
 ------------------
 
-;IDK
+// usando função
 lv 0x000a
 stor valor1
 lv 0x0002
@@ -41,3 +40,25 @@ stor res
 rc
 
 ------------------
+
+// fatorial
+in
+stor o2c
+stor o2e
+
+loop:
+sub 0x0001
+jz fim
+stor o2c
+mulm o2e
+stor o2e
+load o2c
+jnz loop
+
+
+fim:
+load o2e
+end
+
+o2c:
+o2e:
