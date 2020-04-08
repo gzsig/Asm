@@ -21,7 +21,7 @@ function handelProgramMnemonic() {
       // value.setAttribute("style", "font-size: 10px");
       line.appendChild(addr);
       line.appendChild(value);
-      line.setAttribute("style", "font-size: 12px");;
+      line.setAttribute("style", "font-size: 12px");
       ram.appendChild(line);
     }
   }
@@ -40,7 +40,7 @@ function handelProgramAssembly() {
       value.innerHTML = `: ${program[i].hex}`;
       line.appendChild(addr);
       line.appendChild(value);
-      line.setAttribute("style", "font-size: 12px");;
+      line.setAttribute("style", "font-size: 12px");
       ram.appendChild(line);
     }
   }
@@ -59,7 +59,7 @@ function handelRam() {
       value.innerHTML = `: ${format16(memory[i])}`;
       line.appendChild(addr);
       line.appendChild(value);
-      line.setAttribute("style", "font-size: 12px");;
+      line.setAttribute("style", "font-size: 12px");
       ram.appendChild(line);
     }
   }
@@ -83,7 +83,7 @@ function handelLabels() {
     line.appendChild(name);
     line.appendChild(varToken);
     line.appendChild(addr);
-    line.setAttribute("style", "font-size: 12px");;
+    line.setAttribute("style", "font-size: 12px");
     variables.appendChild(line);
   }
 }
@@ -125,6 +125,8 @@ function isTab(event) {
     comandInput.value = "step()";
   } else if (shouldAutocomplete(comand, "execute()")) {
     comandInput.value = "execute()";
+  } else if (shouldAutocomplete(comand, "help()")) {
+    comandInput.value = "help()";
   }
 }
 
@@ -194,6 +196,10 @@ function terminalComands(command = null) {
         execute();
       }, 50);
       break;
+    case "help()":
+      terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> <span style="color: #21ba45"> ${nextCommand} <br> need help? check out the full docs at: <a target="_blank" href="https://github.com/gzsig/Asm/blob/master/README.md">ASM documentation</a> </span> <br>`;
+      terminal.value = "";
+      break;
     default:
       terminalHistory.innerHTML += ` <span style="color: red"> ➜ </span> <span style="color: #55BAD0 "> root </span> ${nextCommand}<br>myTerm: command not found: ${nextCommand} <br>`;
       terminal.value = "";
@@ -220,15 +226,18 @@ function toggleMnemonic() {
 function toggleAssembly() {
   document.getElementById("assembly").classList.toggle("hide-element");
 }
+function toggleExamples() {
+  document.querySelector("#examples").classList.toggle("fade-out");
+}
+function toggleSidebar() {
+  document.querySelector("#setting-modal").classList.toggle("fade-out");
+}
 
 function targetTerm() {
   let termInput = document.getElementById("terminal-input");
   termInput.focus();
 }
 
-function toggleSidebar(){
-  document.querySelector("#setting-modal").classList.toggle("fade-out")
-}
 
 function welcome() {
   let msg =
@@ -240,7 +249,10 @@ function welcome() {
       "https://github.com/gzsig/Asm/blob/master/README.md"
     );
     docLink.setAttribute("target", "_blank");
-    docLink.setAttribute("style", "color: #00d4ff; text-decoration: none; font-weight:bold");
+    docLink.setAttribute(
+      "style",
+      "color: #00d4ff; text-decoration: none; font-weight:bold"
+    );
     let com = document.getElementById("comunication");
     docLink.innerHTML = "DOCS";
     com.appendChild(docLink);
