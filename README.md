@@ -1,5 +1,7 @@
 # Asm
 
+try the full demo at: [ASM](https://gzsig.io/vm-24bits/)
+
 ## The MAN (manual)
 
 #### This guide is designed to help you immediately be productive with ASM, and understand how all of the pieces fit together.
